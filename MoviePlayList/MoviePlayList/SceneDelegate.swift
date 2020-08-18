@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
@@ -18,10 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
-    let main = MainViewController()
+    let main = UINavigationController(rootViewController: MainViewController())
     let tabBar = UITabBarController()
     
     main.tabBarItem = UITabBarItem(title: "L:)st", image: UIImage(systemName: "film") , tag: 0)
+
     
     UITabBar.appearance().tintColor = .black
     tabBar.viewControllers = [main]
@@ -30,6 +33,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.rootViewController = tabBar
     window?.makeKeyAndVisible()
   }
-
 }
 

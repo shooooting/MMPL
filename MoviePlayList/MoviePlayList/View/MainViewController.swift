@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class MainViewController: UIViewController {
   
@@ -36,6 +37,26 @@ class MainViewController: UIViewController {
     
     setUI()
     setConstraint()
+    fetchContact()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  private func fetchContact() {
+    let persistenceManage = PersistenceManager.shared
+    let context = persistenceManage.persistentContainer.viewContext
+    
+    do {
+      let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
+      contact.forEach {
+        print($0.self)
+      }
+    } catch {
+      print(error.localizedDescription)
+    }
   }
   
   private struct Standard {
@@ -95,7 +116,8 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if isPlayList == false {
-      
+      let makeListView = MakeListViewController()
+      navigationController?.pushViewController(makeListView, animated: true)
     }
   }
   
