@@ -75,9 +75,7 @@ class MakeListViewController: UIViewController {
     upViewTitle.font = UIFont.boldSystemFont(ofSize: 35)
     
     collectionV.backgroundColor = .systemBackground
-//    DispatchQueue.main.async {
-//      self.collectionV.dataSource = self
-//    }
+    
     collectionV.delegate = self
     collectionV.dataSource = self
     collectionV.register(MakeListMovieCollectionViewCell.self, forCellWithReuseIdentifier: MakeListMovieCollectionViewCell.identifier)

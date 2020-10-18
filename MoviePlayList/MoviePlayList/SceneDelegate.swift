@@ -20,17 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
-    let main = UINavigationController(rootViewController: MainViewController())
-    let tabBar = UITabBarController()
-    
-    main.tabBarItem = UITabBarItem(title: "L:)st", image: UIImage(systemName: "film") , tag: 0)
-
     
     UITabBar.appearance().tintColor = .black
-    tabBar.viewControllers = [main]
     
     window = UIWindow(windowScene: windowScene)
-    window?.rootViewController = tabBar
+    window?.rootViewController = MainViewController()
     window?.makeKeyAndVisible()
   }
 }

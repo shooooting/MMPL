@@ -8,9 +8,10 @@
 
 import UIKit
 import SnapKit
-import CoreData
 
 class MainViewController: UIViewController {
+    
+    let titleView = MainTitleView()
   
   var isPlayList = false
   
@@ -19,9 +20,7 @@ class MainViewController: UIViewController {
     view.backgroundColor = .systemBackground
     return view
   }()
-  
-  private let upViewTitle = UILabel()
-  
+    
   private let collectionV: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
@@ -65,12 +64,9 @@ class MainViewController: UIViewController {
   }
   
   private func setUI() {
-    [upV, upViewTitle, collectionV].forEach {
+    [upV, collectionV, titleView].forEach {
       view.addSubview($0)
     }
-    
-    upViewTitle.text = "PlayL:)st"
-    upViewTitle.font = UIFont.boldSystemFont(ofSize: 35)
     
     collectionV.backgroundColor = .systemBackground
     collectionV.dataSource = self
@@ -81,16 +77,15 @@ class MainViewController: UIViewController {
   
   private func setConstraint() {
     let guide = view.safeAreaLayoutGuide
+    titleView.snp.makeConstraints {
+        $0.top.leading.equalTo(view.safeAreaLayoutGuide)
+    }
+    
     upV.snp.makeConstraints {
       $0.top.equalToSuperview()
       $0.leading.equalToSuperview()
       $0.width.equalToSuperview()
       $0.height.equalToSuperview().multipliedBy(0.15)
-    }
-    
-    upViewTitle.snp.makeConstraints {
-      $0.leading.equalToSuperview().inset(16)
-      $0.bottom.equalTo(upV.snp.bottom).inset(16)
     }
     
     collectionV.snp.makeConstraints {
@@ -146,7 +141,6 @@ extension MainViewController: UICollectionViewDelegate {
         roundedIndex = currentIndex
       }
     }
-    
     offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing, y: -scrollView.contentInset.top)
     targetContentOffset.pointee = offset
   }

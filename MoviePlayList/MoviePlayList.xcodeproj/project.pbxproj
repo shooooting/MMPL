@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
 		0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449C24E10C3D005DCD10 /* AppDelegate.swift */; };
 		0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */; };
 		0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944A024E10C3D005DCD10 /* MainViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		0E69449924E10C3D005DCD10 /* MoviePlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69449C24E10C3D005DCD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E151ED4253C75AD00556F1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0E69449024E10C3D005DCD10 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 				0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
+				0E151ED4253C75AD00556F1E /* Controller */,
 				0E6944A224E10C3D005DCD10 /* Main.storyboard */,
 				0E6944A524E10C3E005DCD10 /* Assets.xcassets */,
 				0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */,
@@ -101,7 +112,7 @@
 		0E6944B024E10CF9005DCD10 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
+				0E16B0FF253C8929000404C0 /* MainTitleView.swift */,
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
@@ -203,6 +214,7 @@
 			files = (
 				0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */,
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
+				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
 				0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */,
 				0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */,
