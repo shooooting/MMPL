@@ -27,6 +27,7 @@
 		0E6D749B24EA4D790019DAB8 /* ThirdViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */; };
 		0E865C9124E40947008780BE /* MovieList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E865C8F24E40947008780BE /* MovieList+CoreDataClass.swift */; };
 		0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E865C9024E40947008780BE /* MovieList+CoreDataProperties.swift */; };
+		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
 		0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControllerCell.swift; sourceTree = "<group>"; };
 		0E865C8F24E40947008780BE /* MovieList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0E865C9024E40947008780BE /* MovieList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
 		0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		0E151ED4253C75AD00556F1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -113,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				0E16B0FF253C8929000404C0 /* MainTitleView.swift */,
+				0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */,
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
-				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
 				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
@@ -217,6 +220,7 @@
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
 				0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */,
+				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
 				0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */,
 				0E6D748D24E40B3B0019DAB8 /* PersistenceManager.swift in Sources */,
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,

@@ -11,15 +11,11 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - Properties
     let titleView = MainTitleView()
+    let button = AddReviewButton(title: "새로운 영화 추가", style: .white)
   
   var isPlayList = false
-  
-  private let upV: UIView = {
-    let view = UIView()
-    view.backgroundColor = .systemBackground
-    return view
-  }()
     
   private let collectionV: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -30,6 +26,8 @@ class MainViewController: UIViewController {
   var isOneStepPaging = true
   var currentIndex: CGFloat = 0
   
+    
+    // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -63,37 +61,38 @@ class MainViewController: UIViewController {
     static let inset: UIEdgeInsets = .init(top: 30, left: 30, bottom: 30, right: 30)
   }
   
+    // MARK: - UI
   private func setUI() {
-    [upV, collectionV, titleView].forEach {
+    [collectionV, titleView, button].forEach {
       view.addSubview($0)
     }
+    
+    let guide = view.safeAreaLayoutGuide
+    titleView.snp.makeConstraints {
+        $0.top.leading.equalTo(view.safeAreaLayoutGuide)
+    }
+        
+    collectionV.snp.makeConstraints {
+      $0.top.equalTo(titleView.snp.bottom)
+      $0.leading.equalToSuperview()
+      $0.trailing.equalToSuperview()
+      $0.bottom.equalTo(guide.snp.bottom)
+    }
+    
+    button.snp.makeConstraints {
+        $0.bottom.equalToSuperview().inset(40)
+        $0.leading.trailing.equalToSuperview().offset(16).inset(16)
+        $0.height.equalTo(55)
+    }
+  }
+  
+  private func setConstraint() {
     
     collectionV.backgroundColor = .systemBackground
     collectionV.dataSource = self
     collectionV.delegate = self
     collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
     collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
-  }
-  
-  private func setConstraint() {
-    let guide = view.safeAreaLayoutGuide
-    titleView.snp.makeConstraints {
-        $0.top.leading.equalTo(view.safeAreaLayoutGuide)
-    }
-    
-    upV.snp.makeConstraints {
-      $0.top.equalToSuperview()
-      $0.leading.equalToSuperview()
-      $0.width.equalToSuperview()
-      $0.height.equalToSuperview().multipliedBy(0.15)
-    }
-    
-    collectionV.snp.makeConstraints {
-      $0.top.equalTo(upV.snp.bottom)
-      $0.leading.equalToSuperview()
-      $0.trailing.equalToSuperview()
-      $0.bottom.equalTo(guide.snp.bottom)
-    }
   }
 }
 
