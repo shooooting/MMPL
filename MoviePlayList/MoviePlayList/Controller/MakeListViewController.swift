@@ -46,7 +46,7 @@ class MakeListViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -125,7 +125,6 @@ class MakeListViewController: UIViewController {
     let queryURL: URL = URL(string: encodedQuery)!
     
     var requestURL = URLRequest(url: queryURL)
-    //    requestURL.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
     requestURL.addValue(clientID, forHTTPHeaderField: "X-naver-Client-Id")
     requestURL.addValue(clientKey, forHTTPHeaderField: "X-naver-Client-Secret")
     
@@ -149,16 +148,6 @@ class MakeListViewController: UIViewController {
     }
     task.resume()
   }
-  
-//  func urlTaskDone() {
-//    do{
-//      DispatchQueue.main.async {
-//        print(self.data)
-//      }
-//    } catch {
-//
-//    }
-//  }
 }
 
 extension MakeListViewController: UITextFieldDelegate {
@@ -173,8 +162,6 @@ extension MakeListViewController: UITextFieldDelegate {
 
 extension MakeListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    guard let data = data else { return 1 }
-//    return data.total
     
     return data?.total ?? 0
   }
@@ -190,7 +177,6 @@ extension MakeListViewController: UICollectionViewDataSource {
 
     cell.configure(item: img!)
     cell.img.contentMode = .scaleAspectFill
-//    cell.backgroundColor = .purple
     return cell
   }
 }

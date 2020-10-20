@@ -15,85 +15,97 @@ class MainViewController: UIViewController {
     let titleView = MainTitleView()
     let button = AddReviewButton(title: "새로운 영화 추가", style: .white)
   
-  var isPlayList = false
-    
-  private let collectionV: UICollectionView = {
+    var isPlayList = false
+
+    private let collectionV: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
-  }()
-  
-  var isOneStepPaging = true
-  var currentIndex: CGFloat = 0
+    }()
+
+    var isOneStepPaging = true
+    var currentIndex: CGFloat = 0
   
     
     // MARK: - Lifecycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .systemBackground
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
     
-    setUI()
-    setConstraint()
-    fetchContact()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = true
-  }
-  
-  private func fetchContact() {
-    let persistenceManage = PersistenceManager.shared
-    let context = persistenceManage.persistentContainer.viewContext
-    
-    do {
-      let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
-      contact.forEach {
-        print($0.self)
-      }
-    } catch {
-      print(error.localizedDescription)
+        setUI()
+        setConstraint()
+        fetchContact()
     }
-  }
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.navigationBar.isHidden = false
+//    }
+  
+    private func fetchContact() {
+        let persistenceManage = PersistenceManager.shared
+        let context = persistenceManage.persistentContainer.viewContext
+
+        do {
+          let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
+          contact.forEach {
+            print($0.self)
+          }
+        } catch {
+          print(error.localizedDescription)
+        }
+    }
   
   private struct Standard {
     static let space: CGFloat = 15
-    static let inset: UIEdgeInsets = .init(top: 30, left: 30, bottom: 30, right: 30)
+    static let inset: UIEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15)
   }
   
     // MARK: - UI
-  private func setUI() {
-    [collectionV, titleView, button].forEach {
-      view.addSubview($0)
+    private func setUI() {
+        [collectionV, titleView, button].forEach {
+          view.addSubview($0)
+        }
+
+        titleView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(100)
+        }
+            
+        collectionV.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(button.snp.top).offset(-16)
+        }
+
+        button.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(40)
+            $0.leading.trailing.equalToSuperview().offset(16).inset(16)
+            $0.height.equalTo(55)
+        }
     }
-    
-    let guide = view.safeAreaLayoutGuide
-    titleView.snp.makeConstraints {
-        $0.top.leading.equalTo(view.safeAreaLayoutGuide)
-    }
-        
-    collectionV.snp.makeConstraints {
-      $0.top.equalTo(titleView.snp.bottom)
-      $0.leading.equalToSuperview()
-      $0.trailing.equalToSuperview()
-      $0.bottom.equalTo(guide.snp.bottom)
-    }
-    
-    button.snp.makeConstraints {
-        $0.bottom.equalToSuperview().inset(40)
-        $0.leading.trailing.equalToSuperview().offset(16).inset(16)
-        $0.height.equalTo(55)
-    }
-  }
   
-  private func setConstraint() {
+    private func setConstraint() {
+        collectionV.backgroundColor = .systemBackground
+        collectionV.dataSource = self
+        collectionV.delegate = self
+        collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
+        collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
+        button.addTarget(self, action: #selector(tappedAddReviewButton), for: .touchUpInside)
+
+      }
     
-    collectionV.backgroundColor = .systemBackground
-    collectionV.dataSource = self
-    collectionV.delegate = self
-    collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
-    collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
-  }
+    @objc
+    func tappedAddReviewButton(_ sender: UIButton) {
+        let search = MakeListViewController()
+//        navigationController?.pushViewController(search, animated: true)
+        present(search, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -109,10 +121,7 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if isPlayList == false {
-      let makeListView = MakeListViewController()
-      navigationController?.pushViewController(makeListView, animated: true)
-    }
+    
   }
   
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
