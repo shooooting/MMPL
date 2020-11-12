@@ -14,26 +14,28 @@ class dataManager {
   var searchResult: SearchResult?
   
   private init() {
-    
   }
+    
+    
+    
 }
 
 struct SearchResult: Codable {
-  let lastBuildDate: String
-  let total: Int
-  let start: Int
-  let display: Int
-  let items: [MovieInfo]
+    var lastBuildDate: String
+    var total: Int
+    var start: Int
+    var display: Int
+    var items: [MovieInfo]
 }
 
 struct MovieInfo: Codable {
-  let title: String
-  let link: String
-  let image: String
-  let subtitle: String
-  let pubDate: String
-  let director: String
-  let actor: String
-  let userRating: String
+    var title: String
+    var link: String
+    var image: String
+    var subtitle: String
+    var pubDate: String
+    var director: String
+    var actor: String
+    var userRating: String
 }
 

@@ -117,8 +117,8 @@ class MakeListViewController: UIViewController {
   }
   
   private func requestAPI(queryValue: String) {
-    let clientID: String = "uiqxm1pLgFZShlkQAKbU"
-    let clientKey: String = "b3wG6Jny41"
+    let clientID: String = "8RNYIPCx6b6qFpZB6a2V"
+    let clientKey: String = "5Vs0V727Ij"
     
     let query: String = "https://openapi.naver.com/v1/search/movie.json?query=\(queryValue)"
     let encodedQuery: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
@@ -144,6 +144,7 @@ class MakeListViewController: UIViewController {
 
       if let jsonData = try? JSONDecoder().decode(SearchResult.self, from: data) {
         self.data = jsonData
+        
       }
     }
     task.resume()
@@ -151,18 +152,20 @@ class MakeListViewController: UIViewController {
 }
 
 extension MakeListViewController: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    let queryValue: String = searchBar.text ?? ""
-    requestAPI(queryValue: queryValue)
-    searchBar.resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let queryValue: String = searchBar.text ?? ""
+        requestAPI(queryValue: queryValue)
+        searchBar.resignFirstResponder()
+        return true
+    }
     
-    return true
-  }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        searchBar.text = ""
+    }
 }
 
 extension MakeListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
     return data?.total ?? 0
   }
   
@@ -170,13 +173,13 @@ extension MakeListViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
     
     guard let imageData = data?.items[indexPath.item].image else { return cell }
-
     guard let imgURL = URL(string: imageData ) else { return cell }
     guard let imgData = (try? Data(contentsOf: imgURL)) ?? nil else { return cell }
     let img = UIImage(data: imgData)
 
     cell.configure(item: img!)
     cell.img.contentMode = .scaleAspectFill
+    
     return cell
   }
 }

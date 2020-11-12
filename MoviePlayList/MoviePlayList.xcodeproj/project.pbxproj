@@ -14,7 +14,7 @@
 		0E6944A424E10C3D005DCD10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A224E10C3D005DCD10 /* Main.storyboard */; };
 		0E6944A624E10C3E005DCD10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A524E10C3E005DCD10 /* Assets.xcassets */; };
 		0E6944A924E10C3E005DCD10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */; };
-		0E6944B524E158C9005DCD10 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6944B424E158C9005DCD10 /* SnapKit */; };
+		0E6944B524E158C9005DCD10 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */; };
 		0E6944B724E17065005DCD10 /* MakeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */; };
 		0E6944B924E17855005DCD10 /* MakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944B824E17855005DCD10 /* MakeListViewController.swift */; };
 		0E6944BC24E1CA10005DCD10 /* MakeListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944BB24E1CA10005DCD10 /* MakeListData.swift */; };
@@ -27,8 +27,10 @@
 		0E6D749B24EA4D790019DAB8 /* ThirdViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */; };
 		0E865C9124E40947008780BE /* MovieList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E865C8F24E40947008780BE /* MovieList+CoreDataClass.swift */; };
 		0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E865C9024E40947008780BE /* MovieList+CoreDataProperties.swift */; };
+		0ECC204A2542A4DE00459E86 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC20492542A4DE00459E86 /* Service.swift */; };
 		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
 		0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */; };
+		7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +55,12 @@
 		0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewControllerCell.swift; sourceTree = "<group>"; };
 		0E865C8F24E40947008780BE /* MovieList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0E865C9024E40947008780BE /* MovieList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0ECC20492542A4DE00459E86 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
 		0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.debug.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.debug.xcconfig"; sourceTree = "<group>"; };
+		C8C13D521F4299088CD97456 /* Pods-MoviePlayList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.release.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.release.xcconfig"; sourceTree = "<group>"; };
+		D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviePlayList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E6944B524E158C9005DCD10 /* SnapKit in Frameworks */,
+				0E6944B524E158C9005DCD10 /* BuildFile in Frameworks */,
+				7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +79,8 @@
 		0E151ED4253C75AD00556F1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
+				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -85,6 +92,8 @@
 				0E865C9024E40947008780BE /* MovieList+CoreDataProperties.swift */,
 				0E69449B24E10C3D005DCD10 /* MoviePlayList */,
 				0E69449A24E10C3D005DCD10 /* Products */,
+				9C554F2E311FE3845482A940 /* Pods */,
+				B9008A5A175DD0C5C82A4B4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +110,7 @@
 			children = (
 				0E69449C24E10C3D005DCD10 /* AppDelegate.swift */,
 				0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */,
+				0ECC20492542A4DE00459E86 /* Service.swift */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
 				0E151ED4253C75AD00556F1E /* Controller */,
@@ -138,6 +148,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9C554F2E311FE3845482A940 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */,
+				C8C13D521F4299088CD97456 /* Pods-MoviePlayList.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B9008A5A175DD0C5C82A4B4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E6944AD24E10C3E005DCD10 /* Build configuration list for PBXNativeTarget "MoviePlayList" */;
 			buildPhases = (
+				29D35341C384541EC50A7A36 /* [CP] Check Pods Manifest.lock */,
 				0E69449524E10C3D005DCD10 /* Sources */,
 				0E69449624E10C3D005DCD10 /* Frameworks */,
 				0E69449724E10C3D005DCD10 /* Resources */,
+				32737FA3C5DAA1ECC9C48FBA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,7 +184,7 @@
 			);
 			name = MoviePlayList;
 			packageProductDependencies = (
-				0E6944B424E158C9005DCD10 /* SnapKit */,
+				0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */,
 			);
 			productName = MoviePlayList;
 			productReference = 0E69449924E10C3D005DCD10 /* MoviePlayList.app */;
@@ -186,7 +215,7 @@
 			);
 			mainGroup = 0E69449024E10C3D005DCD10;
 			packageReferences = (
-				0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 0E69449A24E10C3D005DCD10 /* Products */;
 			projectDirPath = "";
@@ -210,6 +239,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29D35341C384541EC50A7A36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoviePlayList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32737FA3C5DAA1ECC9C48FBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E69449524E10C3D005DCD10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -225,6 +296,7 @@
 				0E6D748D24E40B3B0019DAB8 /* PersistenceManager.swift in Sources */,
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,
 				0E6944C224E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift in Sources */,
+				0ECC204A2542A4DE00459E86 /* Service.swift in Sources */,
 				0E6D749B24EA4D790019DAB8 /* ThirdViewControllerCell.swift in Sources */,
 				0E6944C024E2B7DB005DCD10 /* MovieDetailViewController.swift in Sources */,
 				0E6944BC24E1CA10005DCD10 /* MakeListData.swift in Sources */,
@@ -374,6 +446,7 @@
 		};
 		0E6944AE24E10C3E005DCD10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,6 +466,7 @@
 		};
 		0E6944AF24E10C3E005DCD10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8C13D521F4299088CD97456 /* Pods-MoviePlayList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -434,7 +508,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -445,9 +519,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0E6944B424E158C9005DCD10 /* SnapKit */ = {
+		0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
