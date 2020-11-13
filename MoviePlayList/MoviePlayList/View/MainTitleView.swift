@@ -12,7 +12,6 @@ class MainTitleView: UIView {
     
     // MARK: - Properties
     let titleLabel = UILabel()
-    let subLabel = UILabel()
     
     
     // MARK: - Lifecycle
@@ -29,7 +28,7 @@ class MainTitleView: UIView {
     
     // MARK: - UI
     private func setUI() {
-        [titleLabel, subLabel].forEach {
+        [titleLabel].forEach {
             addSubview($0)
         }
         backgroundColor = .systemBackground
@@ -39,16 +38,11 @@ class MainTitleView: UIView {
             $0.leading.equalToSuperview().offset(16)
         }
         
-        subLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
-            $0.leading.equalTo(titleLabel)
-        }
     }
     
     private func setConstraints() {
         titleLabel.text = "PlayL:)st"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
         
-        subLabel.text = "나만의 후기를 만들어 보세요."
     }
 }

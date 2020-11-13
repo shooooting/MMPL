@@ -14,7 +14,7 @@
 		0E6944A424E10C3D005DCD10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A224E10C3D005DCD10 /* Main.storyboard */; };
 		0E6944A624E10C3E005DCD10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A524E10C3E005DCD10 /* Assets.xcassets */; };
 		0E6944A924E10C3E005DCD10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */; };
-		0E6944B524E158C9005DCD10 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */; };
+		0E6944B524E158C9005DCD10 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0E6944B424E158C9005DCD10 /* SnapKit */; };
 		0E6944B724E17065005DCD10 /* MakeListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */; };
 		0E6944B924E17855005DCD10 /* MakeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944B824E17855005DCD10 /* MakeListViewController.swift */; };
 		0E6944BC24E1CA10005DCD10 /* MakeListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944BB24E1CA10005DCD10 /* MakeListData.swift */; };
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E6944B524E158C9005DCD10 /* BuildFile in Frameworks */,
+				0E6944B524E158C9005DCD10 /* SnapKit in Frameworks */,
 				7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +81,7 @@
 			children = (
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
+				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -129,7 +130,6 @@
 				0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */,
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
-				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
@@ -184,7 +184,7 @@
 			);
 			name = MoviePlayList;
 			packageProductDependencies = (
-				0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */,
+				0E6944B424E158C9005DCD10 /* SnapKit */,
 			);
 			productName = MoviePlayList;
 			productReference = 0E69449924E10C3D005DCD10 /* MoviePlayList.app */;
@@ -215,7 +215,7 @@
 			);
 			mainGroup = 0E69449024E10C3D005DCD10;
 			packageReferences = (
-				0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */,
+				0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 0E69449A24E10C3D005DCD10 /* Products */;
 			projectDirPath = "";
@@ -508,7 +508,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */ = {
+		0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -519,9 +519,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0E6944B424E158C9005DCD10 /* SwiftPackageProductDependency */ = {
+		0E6944B424E158C9005DCD10 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E6944B324E158C9005DCD10 /* RemoteSwiftPackageReference */;
+			package = 0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */

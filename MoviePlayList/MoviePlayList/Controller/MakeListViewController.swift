@@ -29,7 +29,7 @@ class MakeListViewController: UIViewController {
   private var data: SearchResult? {
     didSet {
       DispatchQueue.main.async {
-        self.collectionV.reloadData()
+//        self.collectionV.reloadData()
       }
     }
   }
@@ -129,9 +129,10 @@ class MakeListViewController: UIViewController {
     requestURL.addValue(clientKey, forHTTPHeaderField: "X-naver-Client-Secret")
     
     let task = URLSession.shared.dataTask(with: requestURL) { (data, response, error) in
+        
       guard error == nil else { return }
       guard let data = data else { return }
-      
+    
 //      do {
 //        let searchInfo: SearchResult = try JSONDecoder().decode(SearchResult.self, from: data)
 //        dataManager.shared.searchResult = searchInfo
@@ -141,10 +142,18 @@ class MakeListViewController: UIViewController {
 //        print(error)
 //      }
       
-
       if let jsonData = try? JSONDecoder().decode(SearchResult.self, from: data) {
+//        let selectData: SearchResult
+//        for jData in jsonData.items {
+//            print(data.title, data.userRating)
+//            let score: Double
+//            score = Double(data.userRating) ?? 0
+//        }
         self.data = jsonData
-        
+        print(jsonData)
+        DispatchQueue.main.async { // ui를 변경하는 queue에 이 내용을 짚어 넣는다.
+            self.collectionV.reloadData()
+        }
       }
     }
     task.resume()
@@ -166,13 +175,14 @@ extension MakeListViewController: UITextFieldDelegate {
 
 extension MakeListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return data?.total ?? 0
+    return data?.items.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
     
-    guard let imageData = data?.items[indexPath.item].image else { return cell }
+    guard let imageData = data?.items[indexPath.item].image else { return UICollectionViewCell() }
+    print(imageData)
     guard let imgURL = URL(string: imageData ) else { return cell }
     guard let imgData = (try? Data(contentsOf: imgURL)) ?? nil else { return cell }
     let img = UIImage(data: imgData)

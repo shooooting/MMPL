@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
 
         titleView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(100)
+            $0.height.equalTo(60)
         }
             
         collectionV.snp.makeConstraints {

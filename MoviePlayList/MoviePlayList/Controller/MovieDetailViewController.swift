@@ -67,10 +67,10 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     let image = UIImage(data: imgData)
     
     let title = detailData[indexPath.item].title
-    let titleResult = title.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
+    let titleResult = title.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "&amp", with: "")
     
     let subTitle = detailData[indexPath.item].subtitle
-    let subTitleResult = subTitle.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
+    let subTitleResult = subTitle.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "&amp", with: "")
     
     let date = detailData[indexPath.item].pubDate
     
@@ -79,7 +79,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     
     let actorString = detailData[indexPath.item].actor
 
-    let actorResult = actorString.replacingOccurrences(of: "|", with: " ")
+    let actorResult = actorString.replacingOccurrences(of: "|", with: ", ")
     
     let userRating = detailData[indexPath.item].userRating
     
@@ -94,7 +94,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     let title = detailData[0].title
     let link = detailData[0].link
     let poster = detailData[0].image
-    
+    print(detailData)
     struct MovieList {
       var title: String
       var listname: String

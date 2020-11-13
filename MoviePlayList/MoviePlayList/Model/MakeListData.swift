@@ -15,9 +15,6 @@ class dataManager {
   
   private init() {
   }
-    
-    
-    
 }
 
 struct SearchResult: Codable {

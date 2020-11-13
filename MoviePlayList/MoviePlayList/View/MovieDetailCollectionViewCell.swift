@@ -65,7 +65,7 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     
     upViewTitle.font = UIFont(name: "AppleSDGothicNeo-bold", size: 35)
     
-    titleLabel.font = UIFont(name: "AppleSDGothicNeo-bold", size: 35)
+    titleLabel.font = UIFont(name: "AppleSDGothicNeo-bold", size: 25)
     subTitleLabel.font = UIFont(name: "AppleSDGothicNeo-UltraLight", size: 20)
     
     date.font = UIFont(name: "AppleSDGothicNeo-UltraLight", size: 15)
@@ -175,13 +175,14 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     }
   }
   
-  func configure(image: UIImage, title: String, subTitle: String, pubDate: String, dirString: String, actString: String, ratingString: String) {
-    img.image = image
-    titleLabel.text = title
-    subTitleLabel.text = subTitle
-    date.text = "(\(pubDate))"
-    director.text = dirString
-    actor.text = actString
-    ratingScore.text = ratingString
+    func configure(image: UIImage, title: String, subTitle: String, pubDate: String, dirString: String, actString: String, ratingString: String) {
+        img.image = image
+        titleLabel.text = title
+        subTitleLabel.text = subTitle
+        date.text = "(\(pubDate))"
+        director.text = dirString
+        actor.text = actString
+        ratingScore.text = ratingString
+        
   }
 }
