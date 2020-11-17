@@ -40,7 +40,7 @@ class LinkViewController: UIViewController, WKUIDelegate {
   private func setConstraint() {
     guard let web = web else { return }
     [web, xButton, upV, upViewTitle].forEach { view.addSubview($0) }
-    upViewTitle.font = UIFont(name: "AppleSDGothicNeo-bold", size: 35)
+    upViewTitle.font = UIFont(name: "AppleSDGothicNeo-bold", size: 25)
     xButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
     xButton.tintColor = .black
     xButton.addTarget(self, action: #selector(tapBackButton(_:)), for: .touchUpInside)

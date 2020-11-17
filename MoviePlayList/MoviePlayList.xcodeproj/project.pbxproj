@@ -82,6 +82,7 @@
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
+				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
-				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
 				0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */,
 			);

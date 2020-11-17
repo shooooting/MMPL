@@ -81,6 +81,7 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     actorTitle.textColor = .black
 
     actor.font = UIFont(name: "AppleSDGothicNeo-UltraLight", size: 15)
+    actor.numberOfLines = 0
     
     rating.backgroundColor = .black
     ratingScore.font = UIFont(name: "AppleSDGothicNeo-bold", size: 40)
@@ -164,8 +165,9 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     }
     
     actor.snp.makeConstraints {
-      $0.top.equalTo(actorTitle.snp.bottom)
-      $0.leading.equalTo(contentView.snp.leading).offset(8)
+        $0.top.equalTo(actorTitle.snp.bottom)
+        $0.leading.equalTo(contentView.snp.leading).offset(8)
+        $0.trailing.equalToSuperview()
     }
     
     addButton.snp.makeConstraints {

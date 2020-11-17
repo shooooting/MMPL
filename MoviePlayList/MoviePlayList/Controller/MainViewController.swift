@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
   
     // MARK: - UI
     private func setUI() {
-        [collectionV, titleView, button].forEach {
+        [collectionV, titleView].forEach {
           view.addSubview($0)
         }
 
@@ -80,14 +80,14 @@ class MainViewController: UIViewController {
         collectionV.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(button.snp.top).offset(-16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
 
-        button.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(40)
-            $0.leading.trailing.equalToSuperview().offset(16).inset(16)
-            $0.height.equalTo(55)
-        }
+//        button.snp.makeConstraints {
+//            $0.bottom.equalToSuperview().inset(40)
+//            $0.leading.trailing.equalToSuperview().offset(16).inset(16)
+//            $0.height.equalTo(55)
+//        }
     }
   
     private func setConstraint() {
@@ -96,16 +96,16 @@ class MainViewController: UIViewController {
         collectionV.delegate = self
         collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
         collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
-        button.addTarget(self, action: #selector(tappedAddReviewButton), for: .touchUpInside)
-
+//        button.addTarget(self, action: #selector(tappedAddReviewButton), for: .touchUpInside)
+        
       }
     
-    @objc
-    func tappedAddReviewButton(_ sender: UIButton) {
-        let search = MakeListViewController()
+//    @objc
+//    func tappedAddReviewButton(_ sender: UIButton) {
+//        let search = MakeListViewController()
 //        navigationController?.pushViewController(search, animated: true)
-        present(search, animated: true, completion: nil)
-    }
+//        present(search, animated: true, completion: nil)
+//    }
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -121,7 +121,7 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    self.tabBarController?.selectedIndex = 1
   }
   
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -173,6 +173,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: width, height: height)
   }
 }
+
+
 
 
 

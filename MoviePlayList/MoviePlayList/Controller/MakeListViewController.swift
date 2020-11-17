@@ -18,7 +18,9 @@ class MakeListViewController: UIViewController {
   
   private let upViewTitle = UILabel()
   private let searchBar = UITextField()
-  
+    
+  private let tabBar = UITabBarController()
+    
   private let layout = UICollectionViewFlowLayout()
   private lazy var collectionV = UICollectionView(
     frame: .zero, collectionViewLayout: layout
@@ -76,6 +78,7 @@ class MakeListViewController: UIViewController {
     
     collectionV.backgroundColor = .systemBackground
     
+    self.tabBarController?.delegate = self
     collectionV.delegate = self
     collectionV.dataSource = self
     collectionV.register(MakeListMovieCollectionViewCell.self, forCellWithReuseIdentifier: MakeListMovieCollectionViewCell.identifier)
@@ -150,7 +153,6 @@ class MakeListViewController: UIViewController {
 //            score = Double(data.userRating) ?? 0
 //        }
         self.data = jsonData
-        print(jsonData)
         DispatchQueue.main.async { // ui를 변경하는 queue에 이 내용을 짚어 넣는다.
             self.collectionV.reloadData()
         }
@@ -175,14 +177,21 @@ extension MakeListViewController: UITextFieldDelegate {
 
 extension MakeListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return data?.items.count ?? 0
+    guard let data = data?.items else {
+        return 0
+    }
+    for score in data {
+        if Double(score.userRating) ?? 0 > 5 {
+            print(score.title)
+        }
+    }
+    return data.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
     
     guard let imageData = data?.items[indexPath.item].image else { return UICollectionViewCell() }
-    print(imageData)
     guard let imgURL = URL(string: imageData ) else { return cell }
     guard let imgData = (try? Data(contentsOf: imgURL)) ?? nil else { return cell }
     let img = UIImage(data: imgData)
@@ -207,4 +216,13 @@ extension MakeListViewController: UICollectionViewDelegate {
     present(vc, animated: true)
     
   }
+}
+
+extension MakeListViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        data?.items.removeAll()
+        collectionV.reloadData()
+        
+    }
 }

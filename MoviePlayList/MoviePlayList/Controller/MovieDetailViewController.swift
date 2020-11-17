@@ -79,7 +79,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     
     let actorString = detailData[indexPath.item].actor
 
-    let actorResult = actorString.replacingOccurrences(of: "|", with: ", ")
+    let actorResult = actorString.replacingOccurrences(of: "|", with: " ")
     
     let userRating = detailData[indexPath.item].userRating
     
@@ -94,7 +94,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     let title = detailData[0].title
     let link = detailData[0].link
     let poster = detailData[0].image
-    print(detailData)
+    
     struct MovieList {
       var title: String
       var listname: String
@@ -135,6 +135,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     let titleResult = title.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
     link.upViewTitle.text = titleResult
     link.url = url
+    
     present(link, animated: true)
   }
 }
