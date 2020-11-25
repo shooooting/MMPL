@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E10E4CF256E8380006BB901 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */; };
+		0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D2256E8489006BB901 /* DataBaseManager.swift */; };
+		0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D5256E8530006BB901 /* LoginViewController.swift */; };
 		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
 		0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449C24E10C3D005DCD10 /* AppDelegate.swift */; };
 		0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0E10E4D2256E8489006BB901 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		0E10E4D5256E8530006BB901 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		0E69449924E10C3D005DCD10 /* MoviePlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69449C24E10C3D005DCD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,13 +82,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E10E4D1256E8456006BB901 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0E69449C24E10C3D005DCD10 /* AppDelegate.swift */,
+				0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */,
+				0ECC20492542A4DE00459E86 /* Service.swift */,
+				0E10E4D2256E8489006BB901 /* DataBaseManager.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		0E151ED4253C75AD00556F1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0E10E4D5256E8530006BB901 /* LoginViewController.swift */,
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
+				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -110,9 +129,7 @@
 		0E69449B24E10C3D005DCD10 /* MoviePlayList */ = {
 			isa = PBXGroup;
 			children = (
-				0E69449C24E10C3D005DCD10 /* AppDelegate.swift */,
-				0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */,
-				0ECC20492542A4DE00459E86 /* Service.swift */,
+				0E10E4D1256E8456006BB901 /* Resource */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
 				0E151ED4253C75AD00556F1E /* Controller */,
@@ -120,6 +137,7 @@
 				0E6944A524E10C3E005DCD10 /* Assets.xcassets */,
 				0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */,
 				0E6944AA24E10C3E005DCD10 /* Info.plist */,
+				0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */,
 			);
 			path = MoviePlayList;
 			sourceTree = "<group>";
@@ -132,7 +150,6 @@
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
-				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
 				0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */,
 			);
 			path = View;
@@ -197,7 +214,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = shooooting;
 				TargetAttributes = {
 					0E69449824E10C3D005DCD10 = {
@@ -232,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E6944A924E10C3E005DCD10 /* LaunchScreen.storyboard in Resources */,
+				0E10E4CF256E8380006BB901 /* GoogleService-Info.plist in Resources */,
 				0E6944A624E10C3E005DCD10 /* Assets.xcassets in Resources */,
 				0E6944A424E10C3D005DCD10 /* Main.storyboard in Resources */,
 			);
@@ -286,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */,
 				0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */,
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
+				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */,
 				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
 				0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */,
@@ -356,6 +376,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -416,6 +437,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

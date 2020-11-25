@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class MainViewController: UIViewController {
     
@@ -36,6 +37,11 @@ class MainViewController: UIViewController {
         setConstraint()
         fetchContact()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        handleNotAuthenticated()
+    }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,6 +52,14 @@ class MainViewController: UIViewController {
 //        super.viewWillDisappear(animated)
 //        navigationController?.navigationBar.isHidden = false
 //    }
+    
+    fileprivate func handleNotAuthenticated() {
+        if Auth.auth().currentUser == nil {
+            let loginVC = LoginViewController()
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true)
+        }
+    }
   
     private func fetchContact() {
         let persistenceManage = PersistenceManager.shared
