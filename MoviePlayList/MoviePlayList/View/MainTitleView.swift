@@ -11,15 +11,14 @@ import UIKit
 class MainTitleView: UIView {
     
     // MARK: - Properties
-    let titleLabel = UILabel()
-    
+    private let titleLabel = UILabel()
+    private let centerTitle = UILabel()
     
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setUI()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +27,7 @@ class MainTitleView: UIView {
     
     // MARK: - UI
     private func setUI() {
-        [titleLabel].forEach {
+        [titleLabel, centerTitle].forEach {
             addSubview($0)
         }
         backgroundColor = .systemBackground
@@ -38,11 +37,20 @@ class MainTitleView: UIView {
             $0.leading.equalToSuperview().offset(16)
         }
         
+        centerTitle.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
+        
     }
     
-    private func setConstraints() {
-        titleLabel.text = "PlayL:)st"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
-        
+    func mainConfigure(with title: String, font: UIFont) {
+        titleLabel.text = title
+        titleLabel.font = font
+    }
+    
+    func profileConfigure(with title: String, font: UIFont) {
+        centerTitle.text = title
+        centerTitle.font = font
     }
 }

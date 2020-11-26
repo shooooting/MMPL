@@ -56,11 +56,6 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
-    
     fileprivate func handleNotAuthenticated() {
         if Auth.auth().currentUser == nil {
             let loginVC = LoginViewController()
@@ -128,8 +123,7 @@ class MainViewController: UIViewController {
         collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
         collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
         personButton.addTarget(self, action: #selector(didTapPersonButton), for: .touchUpInside)
-//        button.addTarget(self, action: #selector(tappedAddReviewButton), for: .touchUpInside)
-        
+        titleView.mainConfigure(with: "PlayL:)st", font: UIFont.boldSystemFont(ofSize: 35))
       }
     
 //    @objc
@@ -144,8 +138,6 @@ class MainViewController: UIViewController {
         let vc = ProfileViewController()
         vc.title = "Profile"
         navigationController?.pushViewController(vc, animated: true)
-//        vc.modalPresentationStyle = .fullScreen
-//        present(UINavigationController(rootViewController: vc), animated: true)
     }
 }
 
