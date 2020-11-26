@@ -52,7 +52,8 @@ class ProfileViewController: UIViewController {
         }
         
         tableView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+            $0.top.equalTo(titleView.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
         }
         
         backButton.snp.makeConstraints {
@@ -61,16 +62,35 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    private func tableHeaderView() -> UIView {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/4).integral)
+        let size = header.frame.height / 1.5
+        let profilePhotoButton = UIButton(frame: CGRect(x: (view.frame.width - size)/2,
+                                                        y: (header.frame.height - size)/2,
+                                                        width: size,
+                                                        height: size))
+        
+        header.addSubview(profilePhotoButton)
+        profilePhotoButton.layer.masksToBounds = true
+        profilePhotoButton.layer.cornerRadius = size / 2.0
+        profilePhotoButton.tintColor = .label
+        profilePhotoButton.addTarget(self,
+                                     action: #selector(didTapProfilePhotoButton),
+                                     for: .touchUpInside)
+        profilePhotoButton.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
+        profilePhotoButton.layer.borderWidth = 1
+        profilePhotoButton.layer.borderColor = UIColor.secondarySystemBackground.cgColor
+        return header
+    }
+    
     @objc
     private func didTapBackButton() {
         navigationController?.popViewController(animated: true)
     }
     
-    private func tableHeaderView() -> UIView {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/4))
+    @objc
+    private func didTapProfilePhotoButton() {
         
-        header.backgroundColor = .red
-        return header
     }
     
     
