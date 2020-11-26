@@ -44,6 +44,7 @@ class NewUserViewController: UIViewController {
     
     private let passwordField: UITextField = {
         let field = UITextField()
+        field.isSecureTextEntry = true
         field.placeholder = "password..."
         field.returnKeyType = .next
         field.leftViewMode = .always
@@ -117,7 +118,25 @@ class NewUserViewController: UIViewController {
     
     @objc
     private func didTapRegisterButton() {
+        [usernameField, EmailField, passwordField, registerButton].forEach {
+            $0.resignFirstResponder()
+        }
         
+        guard let email = EmailField.text, !email.isEmpty,
+              let username = usernameField.text, !username.isEmpty,
+              let password = passwordField.text, !password.isEmpty else {
+            return
+        }
+        
+        AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
+            if registered {
+                // success
+                print("성공")
+            } else {
+                // failed
+                print("실패")
+            }
+        }
     }
 }
 

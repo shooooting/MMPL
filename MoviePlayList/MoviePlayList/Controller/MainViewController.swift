@@ -15,15 +15,23 @@ class MainViewController: UIViewController {
     // MARK: - Properties
     let titleView = MainTitleView()
     let button = AddReviewButton(title: "새로운 영화 추가", style: .white)
-  
-    var isPlayList = false
-
+    
+    private let personButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
+        button.layer.masksToBounds = true
+        button.tintColor = .black
+        button.sizeToFit()
+        return button
+    }()
+    
     private let collectionV: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
 
+    var isPlayList = false
     var isOneStepPaging = true
     var currentIndex: CGFloat = 0
   
@@ -48,10 +56,10 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.isHidden = false
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
     
     fileprivate func handleNotAuthenticated() {
         if Auth.auth().currentUser == nil {
@@ -82,9 +90,12 @@ class MainViewController: UIViewController {
   
     // MARK: - UI
     private func setUI() {
+        view.backgroundColor = .systemBackground
         [collectionV, titleView].forEach {
           view.addSubview($0)
         }
+        
+        titleView.addSubview(personButton)
 
         titleView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -95,6 +106,12 @@ class MainViewController: UIViewController {
             $0.top.equalTo(titleView.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
+        personButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+            $0.width.height.equalTo(30)
         }
 
 //        button.snp.makeConstraints {
@@ -110,6 +127,7 @@ class MainViewController: UIViewController {
         collectionV.delegate = self
         collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
         collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
+        personButton.addTarget(self, action: #selector(didTapPersonButton), for: .touchUpInside)
 //        button.addTarget(self, action: #selector(tappedAddReviewButton), for: .touchUpInside)
         
       }
@@ -120,6 +138,15 @@ class MainViewController: UIViewController {
 //        navigationController?.pushViewController(search, animated: true)
 //        present(search, animated: true, completion: nil)
 //    }
+    
+    @objc
+    private func didTapPersonButton() {
+        let vc = ProfileViewController()
+        vc.title = "Profile"
+        navigationController?.pushViewController(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+//        present(UINavigationController(rootViewController: vc), animated: true)
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {

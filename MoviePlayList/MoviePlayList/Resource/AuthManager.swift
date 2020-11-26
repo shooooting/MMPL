@@ -17,7 +17,8 @@ public class AuthManager {
             if canCreate {
                 
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    <#code#>
+                    print(result)
+                    print(error)
                 }
             }
         }

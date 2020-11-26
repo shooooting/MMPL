@@ -12,6 +12,7 @@
 		0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D5256E8530006BB901 /* LoginViewController.swift */; };
 		0E10E4FB256F841E006BB901 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4FA256F841E006BB901 /* NewUserViewController.swift */; };
 		0E10E4FE256F986F006BB901 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4FD256F986F006BB901 /* AuthManager.swift */; };
+		0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E501256FBCCF006BB901 /* ProfileViewController.swift */; };
 		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
 		0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449C24E10C3D005DCD10 /* AppDelegate.swift */; };
 		0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		0E10E4D5256E8530006BB901 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E10E4FA256F841E006BB901 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		0E10E4FD256F986F006BB901 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0E10E501256FBCCF006BB901 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		0E69449924E10C3D005DCD10 /* MoviePlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69449C24E10C3D005DCD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,12 +100,21 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		0E151ED4253C75AD00556F1E /* Controller */ = {
+		0E10E500256FBBF3006BB901 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				0E10E4D5256E8530006BB901 /* LoginViewController.swift */,
 				0E10E4FA256F841E006BB901 /* NewUserViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0E151ED4253C75AD00556F1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E10E500256FBBF3006BB901 /* Login */,
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
+				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
@@ -316,6 +327,7 @@
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
+				0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */,
 				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */,
 				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
