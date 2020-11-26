@@ -19,6 +19,16 @@ class ProfileViewController: UIViewController {
         button.sizeToFit()
         return button
     }()
+    
+    private let menuButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "gear"), for: .normal)
+        button.tintColor = .black
+        button.layer.masksToBounds = true
+        button.sizeToFit()
+        return button
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         
@@ -38,9 +48,12 @@ class ProfileViewController: UIViewController {
             view.addSubview($0)
         }
         titleView.profileConfigure(with: "Profile", font: UIFont.boldSystemFont(ofSize: 20))
-        titleView.addSubview(backButton)
-        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         
+        [backButton, menuButton].forEach {
+            titleView.addSubview($0)
+        }
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
         tableView.backgroundColor = .purple
         tableView.tableHeaderView = tableHeaderView()
     }
@@ -59,6 +72,11 @@ class ProfileViewController: UIViewController {
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
+        }
+        
+        menuButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(16)
         }
     }
     
@@ -86,6 +104,40 @@ class ProfileViewController: UIViewController {
     @objc
     private func didTapBackButton() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func didTapMenuButton() {
+        let actionSheet = UIAlertController(title: "Log Out",
+                                            message: "Are you sure you want to log out?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
+                AuthManager.shared.logOut { success in
+                    DispatchQueue.main.async {
+                        if success {
+                            let loginVC = LoginViewController()
+                            loginVC.modalPresentationStyle = .fullScreen
+                            self.present(loginVC, animated: true) {
+                                self.navigationController?.popViewController(animated: false)
+                                self.tabBarController?.selectedIndex = 0
+                            }
+                        } else {
+                            fatalError("Could not log out user")
+                        }
+                    }
+                }
+        }))
+        
+        actionSheet.popoverPresentationController?.sourceView = self.view
+        actionSheet.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX,
+                                                                       y: self.view.frame.midY / 4,
+                                                                       width: 0,
+                                                                       height: 0)
+        
+        present(actionSheet, animated: true)
     }
     
     @objc
