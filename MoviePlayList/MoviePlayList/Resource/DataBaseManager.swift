@@ -14,5 +14,9 @@ public class DataBaseManager {
     
     private let database = Database.database().reference()
     
+    public func canCreateNewUser(with email: String, username: String, completion: @escaping (Bool) -> Void) {
+        completion(true)
+    }
+    
     
 }

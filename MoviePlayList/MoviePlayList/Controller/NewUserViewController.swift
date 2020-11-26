@@ -1,14 +1,30 @@
 //
-//  LoginViewController.swift
+//  NewUserViewController.swift
 //  MoviePlayList
 //
-//  Created by ㅇ오ㅇ on 2020/11/25.
+//  Created by ㅇ오ㅇ on 2020/11/26.
 //  Copyright © 2020 shooooting. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class NewUserViewController: UIViewController {
+    
+    private let usernameField: UITextField = {
+        let field = UITextField()
+        field.placeholder = "Username..."
+        field.returnKeyType = .next
+        field.leftViewMode = .always
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
+        field.layer.masksToBounds = true
+        field.layer.cornerRadius = 8.0
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.borderWidth = 1.0
+        field.layer.borderColor = UIColor.secondaryLabel.cgColor
+        return field
+    }()
     
     private let EmailField: UITextField = {
         let field = UITextField()
@@ -16,6 +32,8 @@ class LoginViewController: UIViewController {
         field.returnKeyType = .next
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 8.0
         field.backgroundColor = .secondarySystemBackground
@@ -26,11 +44,12 @@ class LoginViewController: UIViewController {
     
     private let passwordField: UITextField = {
         let field = UITextField()
-        field.isSecureTextEntry = true
-        field.placeholder = "Password..."
+        field.placeholder = "password..."
         field.returnKeyType = .next
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 8.0
         field.backgroundColor = .secondarySystemBackground
@@ -39,23 +58,16 @@ class LoginViewController: UIViewController {
         return field
     }()
     
-    private let loginButton: UIButton = {
+    private let registerButton: UIButton = {
        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 8.0
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    
-    private let createAccountButton: UIButton = {
-       let button = UIButton()
-        button.setTitleColor(.label, for: .normal)
-        button.setTitle("New User? Create an Account", for: .normal)
-        return button
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,67 +75,60 @@ class LoginViewController: UIViewController {
         setLayout()
         setAction()
     }
-    // MARK: - UI
+    
     private func setUI() {
         view.backgroundColor = .systemBackground
-        [EmailField, passwordField, loginButton, createAccountButton].forEach {
+        [usernameField, EmailField, passwordField, registerButton].forEach {
             view.addSubview($0)
         }
-        EmailField.delegate = self
-        passwordField.delegate = self
+        [usernameField, EmailField, passwordField].forEach {
+            $0.delegate = self
+        }
     }
-    // MARK: - Layout
+    
     private func setLayout() {
-        EmailField.snp.makeConstraints {
-            $0.top.equalTo(view.snp.centerY).offset(-100)
+        
+        usernameField.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(150)
             $0.leading.equalTo(view.snp.leading).offset(32)
             $0.trailing.equalTo(view.snp.trailing).inset(32)
             $0.height.equalTo(52)
         }
         
+        EmailField.snp.makeConstraints {
+            $0.top.equalTo(usernameField.snp.bottom).offset(20)
+            $0.leading.trailing.height.equalTo(usernameField)
+        }
+        
         passwordField.snp.makeConstraints {
             $0.top.equalTo(EmailField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(EmailField)
+            $0.leading.trailing.height.equalTo(usernameField)
         }
         
-        loginButton.snp.makeConstraints {
+        registerButton.snp.makeConstraints {
             $0.top.equalTo(passwordField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(EmailField)
-        }
-        
-        createAccountButton.snp.makeConstraints {
-            $0.top.equalTo(loginButton.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
+            $0.leading.trailing.height.equalTo(usernameField)
         }
     }
-    // MARK: - Button Action
+    
     private func setAction() {
-        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
-        createAccountButton.addTarget(self, action: #selector(didTapCreateAccount), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
     }
     
     @objc
-    private func didTapLogin() {
-        [EmailField, passwordField].forEach {
-            $0.resignFirstResponder()
-        }
-        print(#function)
-    }
-    
-    @objc
-    private func didTapCreateAccount() {
-        let vc = NewUserViewController()
-        vc.title = "Create Account"
-        present(UINavigationController(rootViewController: vc), animated: true)
+    private func didTapRegisterButton() {
+        
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension NewUserViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == EmailField {
+        if textField == usernameField {
+            EmailField.becomeFirstResponder()
+        } else if textField == EmailField {
             passwordField.becomeFirstResponder()
-        } else if textField == passwordField {
-            didTapLogin()
+        } else {
+            didTapRegisterButton()
         }
         return true
     }
