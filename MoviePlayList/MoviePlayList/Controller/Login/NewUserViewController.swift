@@ -124,7 +124,7 @@ class NewUserViewController: UIViewController {
         
         guard let email = EmailField.text, !email.isEmpty,
               let username = usernameField.text, !username.isEmpty,
-              let password = passwordField.text, !password.isEmpty, password.count >= 8 else {
+              let password = passwordField.text, !password.isEmpty else {
             return
         }
         
@@ -146,7 +146,7 @@ extension NewUserViewController: UITextFieldDelegate {
             EmailField.becomeFirstResponder()
         } else if textField == EmailField {
             passwordField.becomeFirstResponder()
-        } else {
+        } else if textField == passwordField{
             didTapRegisterButton()
         }
         return true

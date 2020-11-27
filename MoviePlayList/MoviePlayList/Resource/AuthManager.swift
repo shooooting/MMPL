@@ -18,20 +18,24 @@ public class AuthManager {
             if canCreate {
                 
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    print(result)
-                    print(error)
+                    
                 }
             }
         }
     }
     
-    public func logInUser(username: String?, email: String?, password: String, completion: @escaping (Bool) -> Void) {
+    public func logInUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
         
-//        if let email = email {
-//            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-//                <#code#>
-//            }
-//        }
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            
+            if user != nil {
+                print("success")
+                completion(true)
+            } else {
+                print("failed")
+                completion(false)
+            }
+        }
     }
     
     public func logOut(completion: @escaping (Bool) -> Void) {

@@ -44,16 +44,19 @@ class MainViewController: UIViewController {
         setUI()
         setConstraint()
         fetchContact()
+        print(#function)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handleNotAuthenticated()
+        print(#function)
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        print(#function)
     }
     
     fileprivate func handleNotAuthenticated() {

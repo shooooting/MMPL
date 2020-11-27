@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Log In", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 8.0
@@ -57,9 +57,9 @@ class LoginViewController: UIViewController {
     }()
     
     private let createAccountButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitleColor(.label, for: .normal)
-        button.setTitle("New User? Create an Account", for: .normal)
+        button.setTitle("회원 가입", for: .normal)
         return button
     }()
     
@@ -68,8 +68,14 @@ class LoginViewController: UIViewController {
         
         setUI()
         setLayout()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setAction()
     }
+    
     // MARK: - UI
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -126,13 +132,14 @@ class LoginViewController: UIViewController {
             return
         }
         
-        var username: String?
-        var email: String?
-        
-        if usernameEmail.contains("@"), usernameEmail.contains(".") {
-            email = usernameEmail
-        } else {
-            username = usernameEmail
+        AuthManager.shared.logInUser(email: usernameEmail, password: password) { success in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "로그인 Error", message: "로그인 할 수 없습니다.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
         }
         
     }
