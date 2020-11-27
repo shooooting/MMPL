@@ -42,6 +42,12 @@ class ProfileViewController: UIViewController {
         setLayout()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     private func setUI() {
         view.backgroundColor = .systemBackground
         [tableView, titleView].forEach {
