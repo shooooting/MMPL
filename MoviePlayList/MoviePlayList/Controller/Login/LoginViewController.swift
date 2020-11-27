@@ -10,9 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private let EmailField: UITextField = {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "MMPL"
+        label.font = UIFont.boldSystemFont(ofSize: 75)
+        return label
+    }()
+    
+    private let UsernameEmailField: UITextField = {
         let field = UITextField()
-        field.placeholder = "Email"
+        field.placeholder = "Username or Email"
         field.returnKeyType = .next
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
@@ -44,7 +51,7 @@ class LoginViewController: UIViewController {
         button.setTitle("Log In", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 8.0
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemGray3
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -66,15 +73,21 @@ class LoginViewController: UIViewController {
     // MARK: - UI
     private func setUI() {
         view.backgroundColor = .systemBackground
-        [EmailField, passwordField, loginButton, createAccountButton].forEach {
+        [titleLabel, UsernameEmailField, passwordField, loginButton, createAccountButton].forEach {
             view.addSubview($0)
         }
-        EmailField.delegate = self
+        UsernameEmailField.delegate = self
         passwordField.delegate = self
     }
     // MARK: - Layout
     private func setLayout() {
-        EmailField.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
+            $0.bottom.equalTo(UsernameEmailField.snp.top)
+            $0.leading.equalTo(view.snp.leading).offset(32)
+            $0.trailing.equalTo(view.snp.trailing).inset(32)
+        }
+        
+        UsernameEmailField.snp.makeConstraints {
             $0.top.equalTo(view.snp.centerY).offset(-100)
             $0.leading.equalTo(view.snp.leading).offset(32)
             $0.trailing.equalTo(view.snp.trailing).inset(32)
@@ -82,13 +95,13 @@ class LoginViewController: UIViewController {
         }
         
         passwordField.snp.makeConstraints {
-            $0.top.equalTo(EmailField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(EmailField)
+            $0.top.equalTo(UsernameEmailField.snp.bottom).offset(20)
+            $0.leading.trailing.height.equalTo(UsernameEmailField)
         }
         
         loginButton.snp.makeConstraints {
             $0.top.equalTo(passwordField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(EmailField)
+            $0.leading.trailing.height.equalTo(UsernameEmailField)
         }
         
         createAccountButton.snp.makeConstraints {
@@ -104,10 +117,24 @@ class LoginViewController: UIViewController {
     
     @objc
     private func didTapLogin() {
-        [EmailField, passwordField].forEach {
+        [UsernameEmailField, passwordField].forEach {
             $0.resignFirstResponder()
         }
-        print(#function)
+        
+        guard let usernameEmail = UsernameEmailField.text, !usernameEmail.isEmpty,
+              let password = passwordField.text, !password.isEmpty, password.count >= 8 else {
+            return
+        }
+        
+        var username: String?
+        var email: String?
+        
+        if usernameEmail.contains("@"), usernameEmail.contains(".") {
+            email = usernameEmail
+        } else {
+            username = usernameEmail
+        }
+        
     }
     
     @objc
@@ -120,7 +147,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == EmailField {
+        if textField == UsernameEmailField {
             passwordField.becomeFirstResponder()
         } else if textField == passwordField {
             didTapLogin()

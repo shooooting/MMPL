@@ -118,13 +118,13 @@ class NewUserViewController: UIViewController {
     
     @objc
     private func didTapRegisterButton() {
-        [usernameField, EmailField, passwordField, registerButton].forEach {
+        [usernameField, EmailField, passwordField].forEach {
             $0.resignFirstResponder()
         }
         
         guard let email = EmailField.text, !email.isEmpty,
               let username = usernameField.text, !username.isEmpty,
-              let password = passwordField.text, !password.isEmpty else {
+              let password = passwordField.text, !password.isEmpty, password.count >= 8 else {
             return
         }
         

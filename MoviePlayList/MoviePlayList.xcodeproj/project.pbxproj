@@ -109,12 +109,20 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		0E10E51F25700419006BB901 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
+				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		0E151ED4253C75AD00556F1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0E10E500256FBBF3006BB901 /* Login */,
-				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
-				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
+				0E10E51F25700419006BB901 /* Main */,
 				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
 				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,

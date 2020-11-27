@@ -13,6 +13,7 @@ public class AuthManager {
     static let shared = AuthManager()
     
     public func registerNewUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+        
         DataBaseManager.shared.canCreateNewUser(with: email, username: username) { canCreate in
             if canCreate {
                 
@@ -22,6 +23,15 @@ public class AuthManager {
                 }
             }
         }
+    }
+    
+    public func logInUser(username: String?, email: String?, password: String, completion: @escaping (Bool) -> Void) {
+        
+//        if let email = email {
+//            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+//                <#code#>
+//            }
+//        }
     }
     
     public func logOut(completion: @escaping (Bool) -> Void) {
