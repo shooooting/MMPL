@@ -60,7 +60,7 @@ class ProfileViewController: UIViewController {
         }
         backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         menuButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
-        tableView.backgroundColor = .purple
+        
         tableView.tableHeaderView = tableHeaderView()
     }
     
@@ -122,7 +122,6 @@ class ProfileViewController: UIViewController {
                                             handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
                 AuthManager.shared.logOut { success in
-                    DispatchQueue.main.async {
                         if success {
                             let loginVC = LoginViewController()
                             loginVC.modalPresentationStyle = .fullScreen
@@ -133,7 +132,6 @@ class ProfileViewController: UIViewController {
                         } else {
                             fatalError("Could not log out user")
                         }
-                    }
                 }
         }))
         

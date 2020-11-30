@@ -70,7 +70,6 @@ class MainViewController: UIViewController {
     private func fetchContact() {
         let persistenceManage = PersistenceManager.shared
         let context = persistenceManage.persistentContainer.viewContext
-
         do {
           let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
           contact.forEach {
@@ -80,7 +79,7 @@ class MainViewController: UIViewController {
           print(error.localizedDescription)
         }
     }
-  
+   
   private struct Standard {
     static let space: CGFloat = 15
     static let inset: UIEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15)

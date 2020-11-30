@@ -17,9 +17,27 @@ public class AuthManager {
         DataBaseManager.shared.canCreateNewUser(with: email, username: username) { canCreate in
             if canCreate {
                 
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                Auth.auth().createUser(withEmail: email, password: password) { user, error in
+                    if user != nil {
+                        print("success")
+                        completion(true)
+                    } else {
+                        print("fail")
+                        completion(false)
+                    }
                     
+                    DataBaseManager.shared.insertNewUser(widh: email, username: username) { inserted in
+                        if inserted {
+                            completion(true)
+                            return
+                        } else {
+                            completion(false)
+                            return
+                        }
+                    }
                 }
+            } else {
+                completion(false)
             }
         }
     }

@@ -132,6 +132,7 @@ class NewUserViewController: UIViewController {
             if registered {
                 // success
                 print("성공")
+                self.dismiss(animated: true)
             } else {
                 // failed
                 print("실패")

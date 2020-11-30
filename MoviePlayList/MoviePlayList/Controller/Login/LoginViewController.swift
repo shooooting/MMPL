@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -68,7 +69,6 @@ class LoginViewController: UIViewController {
         
         setUI()
         setLayout()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +141,6 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         }
-        
     }
     
     @objc
