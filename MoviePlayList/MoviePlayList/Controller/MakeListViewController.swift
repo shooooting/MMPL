@@ -17,9 +17,13 @@ class MakeListViewController: UIViewController {
     }()
     
     private let upViewTitle = UILabel()
-    private let searchBar = UITextField()
-    
-    private let tabBar = UITabBarController()
+    private let searchBar: UITextField = {
+        let searchBar = UITextField()
+        searchBar.borderStyle = .none
+        searchBar.textColor = UIColor.black
+        searchBar.placeholder = "검색어를 입력해주세요."
+        return searchBar
+    }()
     
     private let layout = UICollectionViewFlowLayout()
     private lazy var collectionV = UICollectionView(
@@ -48,7 +52,9 @@ class MakeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -57,11 +63,10 @@ class MakeListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        searchBar.borderStyle = .none
+        
         border.frame = CGRect(x: 0, y: searchBar.frame.size.height-1, width: searchBar.frame.width, height: 2)
         border.backgroundColor = UIColor.black.cgColor
-        searchBar.textColor = UIColor.black
-        searchBar.placeholder = "검색어를 입력해주세요."
+        
     }
     
     private func setUI() {
@@ -195,9 +200,9 @@ extension MakeListViewController: UICollectionViewDataSource {
         guard let imageData = data?.items[indexPath.item].image else { return UICollectionViewCell() }
         guard let imgURL = URL(string: imageData ) else { return cell }
         guard let imgData = (try? Data(contentsOf: imgURL)) ?? nil else { return cell }
-        let img = UIImage(data: imgData)
+        guard let img = UIImage(data: imgData) else { return cell }
         
-        cell.configure(item: img!)
+        cell.configure(item: img)
         cell.img.contentMode = .scaleAspectFill
         
         return cell

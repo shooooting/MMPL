@@ -18,12 +18,35 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private let UsernameEmailField: UITextField = {
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "사용자 등록"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
+    private let emailField: UITextField = {
         let field = UITextField()
-        field.placeholder = "Username or Email"
+        field.placeholder = "Email..."
         field.returnKeyType = .next
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        field.layer.masksToBounds = true
+        field.layer.cornerRadius = 8.0
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.borderWidth = 1.0
+        field.layer.borderColor = UIColor.secondaryLabel.cgColor
+        return field
+    }()
+    
+    private let usernameField: UITextField = {
+        let field = UITextField()
+        field.placeholder = "Username..."
+        field.returnKeyType = .next
+        field.leftViewMode = .always
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 8.0
         field.backgroundColor = .secondarySystemBackground
@@ -57,13 +80,6 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let createAccountButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.label, for: .normal)
-        button.setTitle("회원 가입", for: .normal)
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,81 +95,93 @@ class LoginViewController: UIViewController {
     // MARK: - UI
     private func setUI() {
         view.backgroundColor = .systemBackground
-        [titleLabel, UsernameEmailField, passwordField, loginButton, createAccountButton].forEach {
+        [titleLabel, subTitleLabel, emailField, usernameField, passwordField, loginButton].forEach {
             view.addSubview($0)
         }
-        UsernameEmailField.delegate = self
+        emailField.delegate = self
+        usernameField.delegate = self
         passwordField.delegate = self
     }
     // MARK: - Layout
     private func setLayout() {
         titleLabel.snp.makeConstraints {
-            $0.bottom.equalTo(UsernameEmailField.snp.top)
+            $0.top.equalToSuperview().offset(60)
             $0.leading.equalTo(view.snp.leading).offset(32)
             $0.trailing.equalTo(view.snp.trailing).inset(32)
         }
         
-        UsernameEmailField.snp.makeConstraints {
+        subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.equalTo(view.snp.leading).offset(32)
+        }
+        
+        emailField.snp.makeConstraints {
             $0.top.equalTo(view.snp.centerY).offset(-100)
             $0.leading.equalTo(view.snp.leading).offset(32)
             $0.trailing.equalTo(view.snp.trailing).inset(32)
             $0.height.equalTo(52)
         }
         
+        usernameField.snp.makeConstraints {
+            $0.top.equalTo(emailField.snp.bottom).offset(20)
+            $0.leading.trailing.height.equalTo(emailField)
+        }
+        
         passwordField.snp.makeConstraints {
-            $0.top.equalTo(UsernameEmailField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(UsernameEmailField)
+            $0.top.equalTo(usernameField.snp.bottom).offset(20)
+            $0.leading.trailing.height.equalTo(emailField)
         }
         
         loginButton.snp.makeConstraints {
             $0.top.equalTo(passwordField.snp.bottom).offset(20)
-            $0.leading.trailing.height.equalTo(UsernameEmailField)
-        }
-        
-        createAccountButton.snp.makeConstraints {
-            $0.top.equalTo(loginButton.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
+            $0.leading.trailing.height.equalTo(emailField)
         }
     }
     // MARK: - Button Action
     private func setAction() {
         loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
-        createAccountButton.addTarget(self, action: #selector(didTapCreateAccount), for: .touchUpInside)
     }
     
     @objc
     private func didTapLogin() {
-        [UsernameEmailField, passwordField].forEach {
+        
+        [usernameField, emailField, passwordField].forEach {
             $0.resignFirstResponder()
         }
         
-        guard let usernameEmail = UsernameEmailField.text, !usernameEmail.isEmpty,
-              let password = passwordField.text, !password.isEmpty, password.count >= 8 else {
+        guard let email = emailField.text, !email.isEmpty,
+              let username = usernameField.text, !username.isEmpty,
+              let password = passwordField.text, !password.isEmpty else {
             return
         }
         
-        AuthManager.shared.logInUser(email: usernameEmail, password: password) { success in
+        AuthManager.shared.logInUser(email: email, password: password) { success in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                print("로그인")
             } else {
-                let alert = UIAlertController(title: "로그인 Error", message: "로그인 할 수 없습니다.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
+                print("로그인 실패")
             }
         }
-    }
-    
-    @objc
-    private func didTapCreateAccount() {
-        let vc = NewUserViewController()
-        vc.title = "Create Account"
-        present(UINavigationController(rootViewController: vc), animated: true)
+        
+        AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
+            if registered {
+                // success
+                print("성공")
+                self.dismiss(animated: true)
+            } else {
+                // failed
+                print("실패")
+            }
+        }
+
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == UsernameEmailField {
+        if textField == emailField {
+            usernameField.becomeFirstResponder()
+        } else if textField == usernameField {
             passwordField.becomeFirstResponder()
         } else if textField == passwordField {
             didTapLogin()

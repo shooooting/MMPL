@@ -10,7 +10,6 @@
 		0E10E4CF256E8380006BB901 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */; };
 		0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D2256E8489006BB901 /* DataBaseManager.swift */; };
 		0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D5256E8530006BB901 /* LoginViewController.swift */; };
-		0E10E4FB256F841E006BB901 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4FA256F841E006BB901 /* NewUserViewController.swift */; };
 		0E10E4FE256F986F006BB901 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4FD256F986F006BB901 /* AuthManager.swift */; };
 		0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E501256FBCCF006BB901 /* ProfileViewController.swift */; };
 		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
@@ -44,7 +43,6 @@
 		0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E10E4D2256E8489006BB901 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		0E10E4D5256E8530006BB901 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0E10E4FA256F841E006BB901 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		0E10E4FD256F986F006BB901 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0E10E501256FBCCF006BB901 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				0E10E4D5256E8530006BB901 /* LoginViewController.swift */,
-				0E10E4FA256F841E006BB901 /* NewUserViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -342,7 +339,6 @@
 				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */,
 				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
-				0E10E4FB256F841E006BB901 /* NewUserViewController.swift in Sources */,
 				0E865C9224E40947008780BE /* MovieList+CoreDataProperties.swift in Sources */,
 				0E6D748D24E40B3B0019DAB8 /* PersistenceManager.swift in Sources */,
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,
