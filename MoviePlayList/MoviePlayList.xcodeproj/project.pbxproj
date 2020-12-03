@@ -14,6 +14,7 @@
 		0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E501256FBCCF006BB901 /* ProfileViewController.swift */; };
 		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
 		0E24892D2574BB3400DD797C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E24892C2574BB3400DD797C /* Extensions.swift */; };
+		0E3A53FD25774C57000E7AB7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A53FC25774C57000E7AB7 /* APIManager.swift */; };
 		0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449C24E10C3D005DCD10 /* AppDelegate.swift */; };
 		0E69449F24E10C3D005DCD10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */; };
 		0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944A024E10C3D005DCD10 /* MainViewController.swift */; };
@@ -36,6 +37,8 @@
 		0ECC204A2542A4DE00459E86 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC20492542A4DE00459E86 /* Service.swift */; };
 		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
 		0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */; };
+		0EDD563F25785A8D00922C53 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDD563E25785A8D00922C53 /* Kingfisher */; };
+		0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */; };
 		7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,7 @@
 		0E10E501256FBCCF006BB901 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		0E24892C2574BB3400DD797C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0E3A53FC25774C57000E7AB7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0E69449924E10C3D005DCD10 /* MoviePlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69449C24E10C3D005DCD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E69449E24E10C3D005DCD10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		0ECC20492542A4DE00459E86 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
 		0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeListNoneCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.debug.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.debug.xcconfig"; sourceTree = "<group>"; };
 		C8C13D521F4299088CD97456 /* Pods-MoviePlayList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.release.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.release.xcconfig"; sourceTree = "<group>"; };
 		D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviePlayList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDD563F25785A8D00922C53 /* Kingfisher in Frameworks */,
 				0E6944B524E158C9005DCD10 /* SnapKit in Frameworks */,
 				7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */,
 			);
@@ -96,6 +102,7 @@
 				0ECC20492542A4DE00459E86 /* Service.swift */,
 				0E10E4D2256E8489006BB901 /* DataBaseManager.swift */,
 				0E10E4FD256F986F006BB901 /* AuthManager.swift */,
+				0E3A53FC25774C57000E7AB7 /* APIManager.swift */,
 				0E24892C2574BB3400DD797C /* Extensions.swift */,
 			);
 			path = Resource;
@@ -113,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
-				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -123,12 +129,21 @@
 			children = (
 				0E10E500256FBBF3006BB901 /* Login */,
 				0E10E51F25700419006BB901 /* Main */,
-				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
-				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
+				0E3A53FA257748E2000E7AB7 /* Search */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
+				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0E3A53FA257748E2000E7AB7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
+				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		0E69449024E10C3D005DCD10 = {
@@ -174,6 +189,7 @@
 				0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */,
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
+				0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
 				0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */,
 			);
@@ -227,6 +243,7 @@
 			name = MoviePlayList;
 			packageProductDependencies = (
 				0E6944B424E158C9005DCD10 /* SnapKit */,
+				0EDD563E25785A8D00922C53 /* Kingfisher */,
 			);
 			productName = MoviePlayList;
 			productReference = 0E69449924E10C3D005DCD10 /* MoviePlayList.app */;
@@ -258,6 +275,7 @@
 			mainGroup = 0E69449024E10C3D005DCD10;
 			packageReferences = (
 				0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0EDD563D25785A8D00922C53 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0E69449A24E10C3D005DCD10 /* Products */;
 			projectDirPath = "";
@@ -333,6 +351,7 @@
 				0E10E4FE256F986F006BB901 /* AuthManager.swift in Sources */,
 				0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */,
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
+				0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */,
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
 				0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */,
@@ -351,6 +370,7 @@
 				0E6D748F24E7DCF20019DAB8 /* LinkViewController.swift in Sources */,
 				0E6944B924E17855005DCD10 /* MakeListViewController.swift in Sources */,
 				0E24892D2574BB3400DD797C /* Extensions.swift in Sources */,
+				0E3A53FD25774C57000E7AB7 /* APIManager.swift in Sources */,
 				0E865C9124E40947008780BE /* MovieList+CoreDataClass.swift in Sources */,
 				0E6944B724E17065005DCD10 /* MakeListCollectionViewCell.swift in Sources */,
 			);
@@ -566,6 +586,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		0EDD563D25785A8D00922C53 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -573,6 +601,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0E6944B324E158C9005DCD10 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		0EDD563E25785A8D00922C53 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EDD563D25785A8D00922C53 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

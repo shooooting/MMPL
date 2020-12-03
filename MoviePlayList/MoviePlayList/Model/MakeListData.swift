@@ -17,7 +17,7 @@ class dataManager {
   }
 }
 
-struct SearchResult: Codable {
+struct SearchResult: Decodable {
     var lastBuildDate: String
     var total: Int
     var start: Int
@@ -25,7 +25,7 @@ struct SearchResult: Codable {
     var items: [MovieInfo]
 }
 
-struct MovieInfo: Codable {
+struct MovieInfo: Decodable {
     var title: String
     var link: String
     var image: String

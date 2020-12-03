@@ -69,7 +69,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailCollectionViewCell.identifier, for: indexPath) as! MovieDetailCollectionViewCell
 
-        let img = detailData[indexPath.item].image
+        let img = detailData[indexPath.item].image ?? ""
         
         guard let imgURL = URL(string: img) else { return cell }
         guard let imgData = try? Data(contentsOf: imgURL) else { return cell }
@@ -113,7 +113,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             var title: String
             var listname: String
             var link: String
-            var poster: String
+            var poster: String?
         }
         
         let movie = MovieList(
