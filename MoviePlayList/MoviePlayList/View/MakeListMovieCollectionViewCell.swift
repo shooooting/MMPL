@@ -16,6 +16,7 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
     let img: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
+        image.sizeToFit()
         return image
     }()
     
@@ -44,7 +45,12 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(item: URL) {
-        img.kf.setImage(with: item)
+    func configure(item: String) {
+        if item == "" {
+            img.image = UIImage(named: "noposter")
+        } else {
+            img.kf.setImage(with: URL(string: item))
+        }
+        
     }
 }

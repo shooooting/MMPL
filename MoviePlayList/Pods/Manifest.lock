@@ -94,6 +94,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.10)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -103,6 +104,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Database
   - Firebase/Storage
+  - RxSwift
 
 SPEC REPOS:
   trunk:
@@ -123,6 +125,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
@@ -142,7 +145,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: bf816e87cdc8e86394165e95aa28225462f7a6d2
+PODFILE CHECKSUM: 728440d1ff896bf2534ab8637d5fe03785cedfeb
 
 COCOAPODS: 1.10.0

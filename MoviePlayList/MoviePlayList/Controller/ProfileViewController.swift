@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - Properties
     private let titleView = MainTitleView()
     private let backButton: UIButton = {
         let button = UIButton()
@@ -34,6 +35,7 @@ class ProfileViewController: UIViewController {
         
         return tableView
     }()
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

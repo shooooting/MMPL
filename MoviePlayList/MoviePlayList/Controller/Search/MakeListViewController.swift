@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
 
 class MakeListViewController: UIViewController {
     
@@ -50,39 +51,13 @@ class MakeListViewController: UIViewController {
         return tableView
     }()
     
-    private func setTableView() {
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = view.bounds
-        let header = UIView(frame: CGRect(x: 0, y: 0,
-                                          width: view.frame.size.width,
-                                          height: view.frame.size.width))
-        let imageView = UIImageView()
-        header.addSubview(imageView)
-        
-        imageView.image = UIImage(named: "plusbutton")
-        tableView.tableHeaderView = header
-    }
-    
-    let models = [
-        "Seoul",
-        "Busan",
-        "Goyang",
-        "Mapo",
-        "Paju",
-        "Namsan",
-        "London",
-        "hongkong"
-    ]
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setUI()
         setConstraint()
-//        setTableView()
         searchBar.accessibilityIdentifier = "영화제목"
     }
     
@@ -91,6 +66,13 @@ class MakeListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
         searchBar.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        data?.items.removeAll()
+        collectionV.reloadData()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,6 +86,8 @@ class MakeListViewController: UIViewController {
         border.backgroundColor = UIColor.black.cgColor
         
     }
+    
+    // MARK: - Helper
     
     private func setUI() {
         [upV, personButton, upViewTitle, searchBar, collectionV].forEach {
@@ -131,7 +115,7 @@ class MakeListViewController: UIViewController {
 //        } else {
             layout.scrollDirection = .vertical
             layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            layout.itemSize = CGSize(width: (width-4)/3, height: (width-4)/3)
+            layout.itemSize = CGSize(width: (width-4)/3, height: (width-4)/2)
             layout.minimumLineSpacing = 1
             layout.minimumInteritemSpacing = 1
 //        }
@@ -205,16 +189,17 @@ extension MakeListViewController: UITextFieldDelegate {
 extension MakeListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data?.items.count ?? 0
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
 
-        guard let data = self.data else { fatalError() }
-        guard let imgURL = URL(string: data.items[indexPath.row].image) else { fatalError()}
+        guard let data = self.data?.items[indexPath.row].image else { fatalError() }
+//        gaurd let imgURL = URL(string: data.items[indexPath.row].image) else { return cell }
         
-        cell.configure(item: imgURL)
+        cell.configure(item: data)
         return cell
     }
 }
@@ -234,23 +219,7 @@ extension MakeListViewController: UICollectionViewDelegate {
     }
 }
 
-extension MakeListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        models.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = models[indexPath.row]
-        return cell
-    }
-    
-    
-}
-
 extension MakeListViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        data?.items.remo
-//        collectionV.reloadData()
     }
 }

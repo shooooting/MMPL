@@ -6,6 +6,7 @@
 //  Copyright © 2020 shooooting. All rights reserved.
 //
 import Alamofire
+import RxSwift
 import UIKit
 
 public class APIManager {
@@ -59,40 +60,40 @@ public class APIManager {
             guard error == nil else { return completion(searchData)}
             guard let data = data else { return completion(searchData)}
             
-                  do {
-                    let searchInfo: SearchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-                    DispatchQueue.main.async {
-                        searchData.append(searchInfo)
-                    }
-//                    searchData.append(searchInfo)
-                    print(searchData)
-                    completion(searchData)
-//                    dataManager.shared.searchResult = searchInfo
-//                    self.data.append(searchInfo)
-            
-                  } catch {
-                    print(error)
-                  }
-            
-//            if let jsonData = try? JSONDecoder().decode([SearchResult].self, from: data) {
+            do {
+                let searchInfo: SearchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+                DispatchQueue.main.async {
+                    searchData.append(searchInfo)
+                }
+                //                    searchData.append(searchInfo)
+                print(searchData)
+                completion(searchData)
+                //                    dataManager.shared.searchResult = searchInfo
+                //                    self.data.append(searchInfo)
                 
-                //        let selectData: SearchResult
-                //        for jData in jsonData.items {
-                //            print(data.title, data.userRating)
-                //            let score: Double
-                //            score = Double(data.userRating) ?? 0
-                //        }
-//                searchData.append(contentsOf: jsonData)
-//                print(jsonData)
-//                completion(searchData)
-//                self.data = jsonData
-//                DispatchQueue.main.async { // ui를 변경하는 queue에 이 내용을 짚어 넣는다.
-//                    let vc = MakeListViewController()
-//                    vc.collectionV.reloadData()
-//                    self.collectionV.reloadData()
-//                }
-//            }
-//            completion(searchData)
+            } catch {
+                print(error)
+            }
+            
+            //            if let jsonData = try? JSONDecoder().decode([SearchResult].self, from: data) {
+            
+            //        let selectData: SearchResult
+            //        for jData in jsonData.items {
+            //            print(data.title, data.userRating)
+            //            let score: Double
+            //            score = Double(data.userRating) ?? 0
+            //        }
+            //                searchData.append(contentsOf: jsonData)
+            //                print(jsonData)
+            //                completion(searchData)
+            //                self.data = jsonData
+            //                DispatchQueue.main.async { // ui를 변경하는 queue에 이 내용을 짚어 넣는다.
+            //                    let vc = MakeListViewController()
+            //                    vc.collectionV.reloadData()
+            //                    self.collectionV.reloadData()
+            //                }
+            //            }
+            //            completion(searchData)
         }
         task.resume()
     }
