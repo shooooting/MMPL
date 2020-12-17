@@ -14,7 +14,7 @@ class PersistenceManager {
   private init(){}
   static let shared = PersistenceManager()
   
-  var movieList = [MovieList]()
+//  var movieList = [MovieList]()
   
   // MARK: - Core Data stack
   

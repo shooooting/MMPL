@@ -1,0 +1,152 @@
+//
+//  LoginViewController.swift
+//  MoviePlayList
+//
+//  Created by ㅇ오ㅇ on 2020/11/25.
+//  Copyright © 2020 shooooting. All rights reserved.
+//
+
+import UIKit
+import FirebaseAuth
+
+protocol AuthenticationControllerProtocol {
+    func checkTextStatus()
+}
+
+class LoginViewController: UIViewController {
+    
+    private var viewModel = LoginViewModel()
+    
+    private let titleIMG: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(systemName: "film.fill")
+        img.tintColor = .black
+        return img
+    }()
+    
+    private lazy var emailView: UIView = {
+        return InputContainerView(image: UIImage(systemName: "envelope"), textField: emailTextField)
+    }()
+    
+    private let emailTextField = CustomTextField(placeholder: "Email")
+    
+    private lazy var passwordView: UIView = {
+        return InputContainerView(image: UIImage(systemName: "lock"), textField: passwordTextField)
+    }()
+    
+    private let passwordTextField = CustomTextField(placeholder: "Password")
+    
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Log In", for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 8.0
+        button.backgroundColor = .white
+        button.setTitleColor(.white, for: .normal)
+        button.isEnabled = false
+        return button
+    }()
+    
+    private let AccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "앱 사용자 등록",
+                                                        attributes: [.font: UIFont.boldSystemFont(ofSize: 16),
+                                                                     .foregroundColor: UIColor.systemGray])
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
+    }()
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setUI()
+        setAction()
+    }
+    
+    // MARK: - UI
+    private func setUI() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
+        
+        view.backgroundColor = .white
+        
+        view.addSubview(titleIMG)
+        titleIMG.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(150)
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(150)
+        }
+        
+        [emailView, passwordView, loginButton].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(50)
+            }
+        }
+        let stack = UIStackView(arrangedSubviews: [emailView, passwordView, loginButton])
+        
+        stack.axis = .vertical
+        stack.spacing = 16
+        
+        view.addSubview(stack)
+        stack.snp.makeConstraints {
+            $0.top.equalTo(titleIMG.snp.bottom).offset(32)
+            $0.leading.equalToSuperview().offset(32)
+            $0.trailing.equalToSuperview().offset(-32)
+        }
+        
+        view.addSubview(AccountButton)
+        AccountButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-40)
+            $0.centerX.equalToSuperview()
+        }
+    }
+    
+    // MARK: - Button Action
+    private func setAction() {
+        AccountButton.addTarget(self, action: #selector(didTapAccountButton), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    
+}
+// MARK: - Selector
+extension LoginViewController {
+    
+    @objc
+    private func didTapLogin() {
+        print("A")
+    }
+    
+    @objc
+    private func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        checkTextStatus()
+    }
+    
+    @objc
+    private func didTapAccountButton() {
+        let vc = RegistrationViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - AuthenticationControllerProtocol
+extension LoginViewController: AuthenticationControllerProtocol {
+    func checkTextStatus() {
+        if viewModel.formIsValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .black
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .white
+        }
+    }
+}

@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     
         setUI()
         setConstraint()
-        fetchContact()
+//        fetchContact()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,24 +58,24 @@ class MainViewController: UIViewController {
     
     fileprivate func handleNotAuthenticated() {
         if Auth.auth().currentUser == nil {
-            let loginVC = LoginViewController()
+            let loginVC = UINavigationController(rootViewController: LoginViewController())
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: true)
         }
     }
   
-    private func fetchContact() {
-        let persistenceManage = PersistenceManager.shared
-        let context = persistenceManage.persistentContainer.viewContext
-        do {
-          let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
-          contact.forEach {
-            print($0.self)
-          }
-        } catch {
-          print(error.localizedDescription)
-        }
-    }
+//    private func fetchContact() {
+//        let persistenceManage = PersistenceManager.shared
+//        let context = persistenceManage.persistentContainer.viewContext
+//        do {
+//          let contact = try context.fetch(MovieList.fetchRequest()) as! [MovieList]
+//          contact.forEach {
+//            print($0.self)
+//          }
+//        } catch {
+//          print(error.localizedDescription)
+//        }
+//    }
    
   private struct Standard {
     static let space: CGFloat = 15
