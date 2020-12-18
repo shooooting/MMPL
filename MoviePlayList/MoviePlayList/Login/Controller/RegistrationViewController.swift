@@ -50,7 +50,7 @@ class RegistrationViewController: UIViewController {
         button.setTitle("Sign Up", for: .normal)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.backgroundColor = .white
+        button.backgroundColor = .lightGray
         button.setTitleColor(.white, for: .normal)
         button.isEnabled = false
         button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
@@ -73,7 +73,10 @@ class RegistrationViewController: UIViewController {
         
         configureUI()
         configureNotificationObservers()
-        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     // MARK: - Helpers
     
@@ -134,7 +137,6 @@ extension RegistrationViewController {
         } else {
             viewModel.nickname = sender.text
         }
-        
         checkTextStatus()
     }
     
@@ -156,9 +158,9 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
         let image = info[.originalImage] as? UIImage
         profileImage = image
         plusPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
-        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
         plusPhotoButton.layer.borderWidth = 3.0
-        plusPhotoButton.layer.cornerRadius = 200 / 2
+        plusPhotoButton.layer.cornerRadius = 150 / 2
         
         dismiss(animated: true, completion: nil)
     }
@@ -171,7 +173,7 @@ extension RegistrationViewController:  AuthenticationControllerProtocol {
             signUpButton.backgroundColor = .black
         } else {
             signUpButton.isEnabled = false
-            signUpButton.backgroundColor = .white
+            signUpButton.backgroundColor = .lightGray
         }
     }
 }
