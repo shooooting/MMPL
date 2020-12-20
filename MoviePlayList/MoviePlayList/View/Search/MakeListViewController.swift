@@ -77,14 +77,13 @@ class MakeListViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         searchBar.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         border.frame = CGRect(x: 0, y: searchBar.frame.size.height-1, width: searchBar.frame.width, height: 2)
         border.backgroundColor = UIColor.black.cgColor
-        
     }
     
     // MARK: - Helper

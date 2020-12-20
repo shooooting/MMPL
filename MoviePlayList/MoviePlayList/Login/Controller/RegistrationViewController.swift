@@ -73,6 +73,7 @@ class RegistrationViewController: UIViewController {
         
         configureUI()
         configureNotificationObservers()
+        keyboardNotification()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -126,7 +127,27 @@ class RegistrationViewController: UIViewController {
 // MARK: - Selector
 extension RegistrationViewController {
     @objc func handleRegistration() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        nicknameTextField.resignFirstResponder()
         
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let nickname = nicknameTextField.text else { return }
+        guard let profileImage = profileImage else { return }
+        
+        let profile = profileAuth(email: email, password: password,
+                                  nickname: nickname, profileImage: profileImage)
+        
+        AuthServiece.shared.createUser(profileAuth: profile) { (error) in
+            
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+                
+            }
+            self.dismiss(animated: true, completion: nil)
+            
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -149,10 +170,21 @@ extension RegistrationViewController {
     @objc func handleShowLogin() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func keyboardWillAppear() {
+        if view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 70
+        }
+    }
+    
+    @objc func keyboardWillDisappear() {
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y += 70
+        }
+    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
-
 extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
@@ -166,7 +198,7 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
     }
 }
 
-extension RegistrationViewController:  AuthenticationControllerProtocol {
+extension RegistrationViewController: AuthenticationControllerProtocol {
     func checkTextStatus() {
         if viewModel.formIsValid {
             signUpButton.isEnabled = true
@@ -177,3 +209,12 @@ extension RegistrationViewController:  AuthenticationControllerProtocol {
         }
     }
 }
+
+// MARK: - Keyboard NotificationCenter
+extension RegistrationViewController {
+    func keyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification , object: nil)
+    }
+}
+

@@ -35,6 +35,7 @@
 		0EAA8690258B56A100D75C75 /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA868F258B56A100D75C75 /* InputContainerView.swift */; };
 		0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */; };
 		0EAA869B258B6A0600D75C75 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */; };
+		0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA86AC258F0EBB00D75C75 /* AuthService.swift */; };
 		0ECC204A2542A4DE00459E86 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC20492542A4DE00459E86 /* Service.swift */; };
 		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
 		0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */; };
@@ -73,6 +74,7 @@
 		0EAA868F258B56A100D75C75 /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0EAA86AC258F0EBB00D75C75 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0ECC20492542A4DE00459E86 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
 		0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				0E10E4D1256E8456006BB901 /* Resource */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
+				0EAA86AB258F0E6E00D75C75 /* API */,
 				0E10E500256FBBF3006BB901 /* Login */,
 				0E6944A524E10C3E005DCD10 /* Assets.xcassets */,
 				0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */,
@@ -223,6 +226,14 @@
 				0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0EAA86AB258F0E6E00D75C75 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0EAA86AC258F0EBB00D75C75 /* AuthService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		9C554F2E311FE3845482A940 /* Pods */ = {
@@ -376,6 +387,7 @@
 				0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */,
 				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0EAA8689258B530D00D75C75 /* RegistrationViewModel.swift in Sources */,
+				0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */,
 				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
 				0E6D748D24E40B3B0019DAB8 /* PersistenceManager.swift in Sources */,
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,

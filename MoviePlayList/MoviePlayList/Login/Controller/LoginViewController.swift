@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
         
         setUI()
         setAction()
-        keyboardWill()
+        keyboardNotification()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -124,7 +124,19 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     @objc
     private func didTapLogin() {
-        print("A")
+        
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthServiece.shared.loginUser(withEmail: email, password: password) { (result, error) in
+            
+            if let error = error {
+                print("DEBUG: 로그인 에러 \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc
@@ -145,13 +157,13 @@ extension LoginViewController {
     
     @objc func keyboardWillAppear(_ sender: NotificationCenter){
         if view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= 120
+            self.view.frame.origin.y -= 80
         }
     }
     
     @objc func keyboardWillDisappear(_ sender: NotificationCenter){
         if view.frame.origin.y != 0 {
-            self.view.frame.origin.y += 120
+            self.view.frame.origin.y += 80
         }
     }
 }
@@ -183,8 +195,7 @@ extension LoginViewController: UITextFieldDelegate {
 
 // MARK: - Keyboard NotificationCenter
 extension LoginViewController {
-    
-    func keyboardWill() {
+    func keyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
     }
