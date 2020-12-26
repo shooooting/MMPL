@@ -35,7 +35,7 @@ class MovieDetailViewController: UIViewController {
         view.addSubview(collectionV)
         setLayout()
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = true
+//        tabBarController?.tabBar.isHidden = true
         collectionV.backgroundColor = .white
         collectionV.dataSource = self
         collectionV.isScrollEnabled = false
@@ -68,18 +68,26 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailCollectionViewCell.identifier, for: indexPath) as! MovieDetailCollectionViewCell
-
-        let img = detailData[indexPath.item].image ?? "noposter"
-        print(img)
-        guard let imgURL = URL(string: img) else { return cell }
-        guard let imgData = try? Data(contentsOf: imgURL) else { return cell }
-        let image = UIImage(data: imgData)
+        
+        var image = UIImage()
+        if detailData[indexPath.item].image == "" {
+            image = UIImage(named: "noposter")!
+        } else {
+            let img = detailData[indexPath.item].image
+            guard let imgURL = URL(string: img) else { return cell }
+            guard let imgData = try? Data(contentsOf: imgURL) else { return cell }
+            image = UIImage(data: imgData) ?? UIImage(named: "noposter") as! UIImage
+        }
         
         let title = detailData[indexPath.item].title
-        let titleResult = title.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "&amp", with: "")
+        let titleResult = title.replacingOccurrences(of: "</b>", with: "")
+            .replacingOccurrences(of: "<b>", with: "")
+            .replacingOccurrences(of: "&amp", with: "")
         
         let subTitle = detailData[indexPath.item].subtitle
-        let subTitleResult = subTitle.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "&amp", with: "")
+        let subTitleResult = subTitle.replacingOccurrences(of: "</b>", with: "")
+            .replacingOccurrences(of: "<b>", with: "")
+            .replacingOccurrences(of: "&amp", with: "")
         
         let date = detailData[indexPath.item].pubDate
         
@@ -89,10 +97,12 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         let actorString = detailData[indexPath.item].actor
         
         let actorResult = actorString.replacingOccurrences(of: "|", with: " ")
+            .replacingOccurrences(of: "</b>", with: "")
+            .replacingOccurrences(of: "<b>", with: "")
         
         let userRating = detailData[indexPath.item].userRating
         
-        cell.configure(image: image!, title: titleResult, subTitle: subTitleResult, pubDate: date, dirString: directorResult, actString: actorResult, ratingString: userRating)
+        cell.configure(image: image, title: titleResult, subTitle: subTitleResult, pubDate: date, dirString: directorResult, actString: actorResult, ratingString: userRating)
         
         cell.moreButton.addTarget(self, action: #selector(moreMovie(_:)), for: .touchUpInside)
         cell.addButton.addTarget(self, action: #selector(addList(_:)), for: .touchUpInside)

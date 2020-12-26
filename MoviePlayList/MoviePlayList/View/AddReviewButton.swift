@@ -18,7 +18,6 @@ class AddReviewButton: UIButton {
         }
     }
     
-    
     // MARK: - Lifecycle
     init(title: String, style: ButtonStyle) {
         super.init(frame: .zero)

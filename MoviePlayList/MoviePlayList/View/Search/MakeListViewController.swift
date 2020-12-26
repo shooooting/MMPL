@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import RxSwift
 
 class MakeListViewController: UIViewController {
     
@@ -45,12 +44,6 @@ class MakeListViewController: UIViewController {
     
     private let border = CALayer()
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return tableView
-    }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,21 +51,12 @@ class MakeListViewController: UIViewController {
         
         setUI()
         setConstraint()
-        searchBar.accessibilityIdentifier = "영화제목"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = false
-        searchBar.becomeFirstResponder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        data?.items.removeAll()
-        collectionV.reloadData()
+//        tabBarController?.tabBar.isHidden = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,10 +73,9 @@ class MakeListViewController: UIViewController {
     // MARK: - Helper
     
     private func setUI() {
-        [upV, personButton, upViewTitle, searchBar, collectionV].forEach {
+        [upV, personButton, upViewTitle, searchBar].forEach {
             view.addSubview($0)
         }
-        
         searchBar.layer.addSublayer(border)
         searchBar.delegate = self
         
@@ -101,6 +84,7 @@ class MakeListViewController: UIViewController {
         
         collectionV.backgroundColor = .systemBackground
         setCollectionViewLayout()
+        
         self.tabBarController?.delegate = self
         collectionV.delegate = self
         collectionV.dataSource = self
@@ -109,15 +93,12 @@ class MakeListViewController: UIViewController {
     
     private func setCollectionViewLayout() {
         let width = view.frame.size.width
-//        if data.count == 0 {
-//            layout.itemSize = CGSize(width: width, height: width)
-//        } else {
-            layout.scrollDirection = .vertical
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            layout.itemSize = CGSize(width: (width-4)/3, height: (width-4)/2)
-            layout.minimumLineSpacing = 1
-            layout.minimumInteritemSpacing = 1
-//        }
+        
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: (width-4)/3, height: (width-4)/2)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
         
     }
     
@@ -137,12 +118,6 @@ class MakeListViewController: UIViewController {
             $0.leading.equalToSuperview().offset(16)
             $0.width.equalToSuperview().offset(-32)
             $0.height.equalTo(44)
-        }
-        collectionV.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(8)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.snp.bottom)
         }
         
         personButton.snp.makeConstraints {
@@ -174,8 +149,15 @@ class MakeListViewController: UIViewController {
 extension MakeListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let queryValue: String = searchBar.text ?? ""
-//        searchMovieName(keyword: queryValue)
+        //        searchMovieName(keyword: queryValue)
         searchMovie(keyword: queryValue)
+        view.addSubview(collectionV)
+        collectionV.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.snp.bottom)
+        }
         searchBar.resignFirstResponder()
         return true
     }
@@ -192,11 +174,11 @@ extension MakeListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
-
+        
         guard let data = self.data?.items[indexPath.row].image else { fatalError() }
-//        gaurd let imgURL = URL(string: data.items[indexPath.row].image) else { return cell }
+        //        gaurd let imgURL = URL(string: data.items[indexPath.row].image) else { return cell }
         
         cell.configure(item: data)
         return cell
@@ -213,12 +195,14 @@ extension MakeListViewController: UICollectionViewDelegate {
             vc.detailData.removeAll()
             vc.detailData.append(movieInfo!)
         }
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension MakeListViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        data?.items.removeAll()
+        collectionV.reloadData()
     }
 }

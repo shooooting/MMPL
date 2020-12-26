@@ -38,6 +38,7 @@ class PersistenceManager {
       if context.hasChanges {
           do {
               try context.save()
+            print(context)
           } catch {
 
               let nserror = error as NSError

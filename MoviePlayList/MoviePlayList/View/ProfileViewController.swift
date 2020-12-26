@@ -125,7 +125,7 @@ class ProfileViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
                 AuthManager.shared.logOut { success in
                         if success {
-                            let loginVC = LoginViewController()
+                            let loginVC = UINavigationController(rootViewController: LoginViewController())
                             loginVC.modalPresentationStyle = .fullScreen
                             self.present(loginVC, animated: true) {
                                 self.navigationController?.popViewController(animated: false)

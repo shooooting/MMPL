@@ -72,8 +72,7 @@ class LoginViewController: UIViewController {
     // MARK: - UI
     private func setUI() {
         navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
-        
+
         view.backgroundColor = .white
         
         view.addSubview(titleIMG)
