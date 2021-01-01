@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ProfileViewController: UIViewController {
     
     // MARK: - Properties
-    private let titleView = MainTitleView()
+    
+    private var AuthUser = [User]() {
+        didSet {
+            guard let url = URL(string: AuthUser[0].profileImageUrl) else { return }
+            selectProfileImageButton.kf.setImage(with: url, for: .normal)
+            selectProfileImageButton.layer.cornerRadius = 200 / 2
+        }
+    }
+    private lazy var titleView: MainTitleView = {
+        let view = MainTitleView()
+        view.profileConfigure(with: "Profile", font: UIFont.boldSystemFont(ofSize: 20))
+        return view
+    }()
+    
     private let backButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "chevron.left"), for: .normal)
@@ -30,18 +45,29 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        
-        return tableView
-    }()
-    // MARK: - Lifecycle
+//    private let collectionView: UICollectionView = {
+//        let collection = UICollectionView()
+//        return collection
+//    }()
     
+    private let selectProfileImageButton: UIButton = {
+        let img = UIButton()
+        img.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
+        img.tintColor = .black
+        img.layer.cornerRadius = 200 / 2
+        img.imageView?.contentMode = .scaleAspectFill
+        img.clipsToBounds = true
+        return img
+    }()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setLayout()
+        ProfileImageAction()
+        authUser()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,18 +78,21 @@ class ProfileViewController: UIViewController {
     
     private func setUI() {
         view.backgroundColor = .systemBackground
-        [tableView, titleView].forEach {
+        [selectProfileImageButton, titleView].forEach {
             view.addSubview($0)
         }
-        titleView.profileConfigure(with: "Profile", font: UIFont.boldSystemFont(ofSize: 20))
         
         [backButton, menuButton].forEach {
             titleView.addSubview($0)
         }
         backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         menuButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
-        
-        tableView.tableHeaderView = tableHeaderView()
+    }
+    
+    private func authUser() {
+        Service.LoginUser { user in
+            self.AuthUser = user
+        }
     }
     
     private func setLayout() {
@@ -72,10 +101,16 @@ class ProfileViewController: UIViewController {
             $0.height.equalTo(60)
         }
         
-        tableView.snp.makeConstraints {
+        selectProfileImageButton.snp.makeConstraints {
             $0.top.equalTo(titleView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(200)
         }
+        
+//        collectionView.snp.makeConstraints {
+//            $0.top.equalTo(titleView.snp.bottom)
+//            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+//        }
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -86,27 +121,6 @@ class ProfileViewController: UIViewController {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(16)
         }
-    }
-    
-    private func tableHeaderView() -> UIView {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/4).integral)
-        let size = header.frame.height / 1.5
-        let profilePhotoButton = UIButton(frame: CGRect(x: (view.frame.width - size)/2,
-                                                        y: (header.frame.height - size)/2,
-                                                        width: size,
-                                                        height: size))
-        
-        header.addSubview(profilePhotoButton)
-        profilePhotoButton.layer.masksToBounds = true
-        profilePhotoButton.layer.cornerRadius = size / 2.0
-        profilePhotoButton.tintColor = .label
-        profilePhotoButton.addTarget(self,
-                                     action: #selector(didTapProfilePhotoButton),
-                                     for: .touchUpInside)
-        profilePhotoButton.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
-        profilePhotoButton.layer.borderWidth = 1
-        profilePhotoButton.layer.borderColor = UIColor.secondarySystemBackground.cgColor
-        return header
     }
     
     @objc
@@ -145,12 +159,39 @@ class ProfileViewController: UIViewController {
         
         present(actionSheet, animated: true)
     }
-    
-    @objc
-    private func didTapProfilePhotoButton() {
-        
+}
+
+// MARK: - ProfileImage Action
+
+extension ProfileViewController {
+
+    private func ProfileImageAction() {
+        selectProfileImageButton.addTarget(self, action: #selector(handleProfileImageButton), for: .touchUpInside)
     }
-    
-    
-    
+
+    @objc
+    private func handleProfileImageButton() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        selectProfileImageButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        selectProfileImageButton.layer.cornerRadius = 200 / 2
+        
+        Service.updateUserData(name: image) { error in
+            if let error = error {
+                print("DEBUG: Failed to upload \(error.localizedDescription)")
+                return
+            }
+        }
+
+        dismiss(animated: true, completion: nil)
+    }
 }

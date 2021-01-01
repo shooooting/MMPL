@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E003838259F077E00CCBAE8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E003837259F077E00CCBAE8 /* User.swift */; };
+		0E00383D259F0A4400CCBAE8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00383C259F0A4400CCBAE8 /* Service.swift */; };
 		0E10E4CF256E8380006BB901 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */; };
 		0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D2256E8489006BB901 /* DataBaseManager.swift */; };
 		0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D5256E8530006BB901 /* LoginViewController.swift */; };
@@ -36,15 +38,15 @@
 		0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */; };
 		0EAA869B258B6A0600D75C75 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */; };
 		0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA86AC258F0EBB00D75C75 /* AuthService.swift */; };
-		0ECC204A2542A4DE00459E86 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC20492542A4DE00459E86 /* Service.swift */; };
 		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
-		0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */; };
 		0EDD563F25785A8D00922C53 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDD563E25785A8D00922C53 /* Kingfisher */; };
 		0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */; };
 		7822F8F3F0D7749FEB723B8D /* Pods_MoviePlayList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8289917B86C0AE80B1B6E4D /* Pods_MoviePlayList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E003837259F077E00CCBAE8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E00383C259F0A4400CCBAE8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E10E4D2256E8489006BB901 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		0E10E4D5256E8530006BB901 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -75,9 +77,7 @@
 		0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		0EAA86AC258F0EBB00D75C75 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		0ECC20492542A4DE00459E86 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
-		0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeListNoneCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.debug.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.debug.xcconfig"; sourceTree = "<group>"; };
 		C8C13D521F4299088CD97456 /* Pods-MoviePlayList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.release.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				0E69449C24E10C3D005DCD10 /* AppDelegate.swift */,
-				0ECC20492542A4DE00459E86 /* Service.swift */,
 				0E10E4D2256E8489006BB901 /* DataBaseManager.swift */,
 				0E10E4FD256F986F006BB901 /* AuthManager.swift */,
 				0E3A53FC25774C57000E7AB7 /* APIManager.swift */,
@@ -162,8 +161,9 @@
 				0E10E4D1256E8456006BB901 /* Resource */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
-				0EAA86AB258F0E6E00D75C75 /* API */,
+				0EB85E1C259E3EFB00DC5A46 /* Profile */,
 				0E10E500256FBBF3006BB901 /* Login */,
+				0EAA86AB258F0E6E00D75C75 /* API */,
 				0E6944A524E10C3E005DCD10 /* Assets.xcassets */,
 				0E6944A724E10C3E005DCD10 /* LaunchScreen.storyboard */,
 				0E6944AA24E10C3E005DCD10 /* Info.plist */,
@@ -175,7 +175,6 @@
 		0E6944B024E10CF9005DCD10 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0E16B0FF253C8929000404C0 /* MainTitleView.swift */,
 				0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */,
 				0E6944B624E17065005DCD10 /* MakeListCollectionViewCell.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
@@ -186,7 +185,6 @@
 				0E3A53FA257748E2000E7AB7 /* Search */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
-				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,7 +194,7 @@
 			children = (
 				0E6944BB24E1CA10005DCD10 /* MakeListData.swift */,
 				0E6D748C24E40B3B0019DAB8 /* PersistenceManager.swift */,
-				0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */,
+				0E003837259F077E00CCBAE8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,8 +230,18 @@
 			isa = PBXGroup;
 			children = (
 				0EAA86AC258F0EBB00D75C75 /* AuthService.swift */,
+				0E00383C259F0A4400CCBAE8 /* Service.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		0EB85E1C259E3EFB00DC5A46 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0E16B0FF253C8929000404C0 /* MainTitleView.swift */,
+				0E10E501256FBCCF006BB901 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		9C554F2E311FE3845482A940 /* Pods */ = {
@@ -382,18 +390,18 @@
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
 				0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */,
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
-				0EDB56BD24E3FDF100CCB5BE /* CoreData.xcdatamodeld in Sources */,
 				0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */,
 				0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */,
 				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0EAA8689258B530D00D75C75 /* RegistrationViewModel.swift in Sources */,
+				0E003838259F077E00CCBAE8 /* User.swift in Sources */,
 				0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */,
+				0E00383D259F0A4400CCBAE8 /* Service.swift in Sources */,
 				0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */,
 				0E6D748D24E40B3B0019DAB8 /* PersistenceManager.swift in Sources */,
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,
 				0EAA8685258B52F300D75C75 /* LoginViewModel.swift in Sources */,
 				0E6944C224E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift in Sources */,
-				0ECC204A2542A4DE00459E86 /* Service.swift in Sources */,
 				0E6D749B24EA4D790019DAB8 /* ThirdViewControllerCell.swift in Sources */,
 				0EAA869B258B6A0600D75C75 /* RegistrationViewController.swift in Sources */,
 				0E6944C024E2B7DB005DCD10 /* MovieDetailViewController.swift in Sources */,
@@ -632,19 +640,6 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		0EDB56BB24E3FDF100CCB5BE /* CoreData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */,
-			);
-			currentVersion = 0EDB56BC24E3FDF100CCB5BE /* CoreData.xcdatamodel */;
-			path = CoreData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0E69449124E10C3D005DCD10 /* Project object */;
 }

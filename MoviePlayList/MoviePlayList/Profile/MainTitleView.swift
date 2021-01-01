@@ -16,7 +16,7 @@ class MainTitleView: UIView {
     
     // MARK: - Lifecycle
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         
         setUI()
     }
