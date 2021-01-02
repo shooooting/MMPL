@@ -12,9 +12,8 @@ import CoreData
 class MovieDetailViewController: UIViewController {
     
     private let layout = UICollectionViewFlowLayout()
-    private lazy var collectionV = UICollectionView(
-        frame: .zero, collectionViewLayout: layout
-    )
+    private lazy var collectionV = UICollectionView(frame: .zero,
+                                                    collectionViewLayout: layout)
     
     var detailData: [MovieInfo] = []
     

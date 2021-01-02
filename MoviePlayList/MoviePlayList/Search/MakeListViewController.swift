@@ -11,7 +11,13 @@ import Kingfisher
 
 class MakeListViewController: UIViewController {
     
-    private var data: SearchResult?
+    private var data: SearchResult? {
+        didSet {
+            if data?.total == 0 || data?.total == nil {
+                animateWarning()
+            }
+        }
+    }
     
     private let upV: UIView = {
         let view = UIView()
@@ -37,10 +43,11 @@ class MakeListViewController: UIViewController {
         return searchBar
     }()
     
+    private lazy var noSearchView = NoSearchView(title: "검색된 영상가 없습니다.")
+    
     private let layout = UICollectionViewFlowLayout()
-    lazy var collectionV = UICollectionView(
-        frame: .zero, collectionViewLayout: layout
-    )
+    private lazy var collectionV = UICollectionView(frame: .zero,
+                                                    collectionViewLayout: layout)
     
     private let border = CALayer()
     
@@ -55,8 +62,7 @@ class MakeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-//        tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,19 +82,53 @@ class MakeListViewController: UIViewController {
         [upV, personButton, upViewTitle, searchBar].forEach {
             view.addSubview($0)
         }
+        navigationController?.navigationBar.isHidden = true
+        
         searchBar.layer.addSublayer(border)
         searchBar.delegate = self
         
         upViewTitle.text = "MakeL:)st"
         upViewTitle.font = UIFont.boldSystemFont(ofSize: 35)
         
-        collectionV.backgroundColor = .systemBackground
+        collectionV.backgroundColor = .white
+        collectionV.tag = 100
         setCollectionViewLayout()
         
         self.tabBarController?.delegate = self
         collectionV.delegate = self
         collectionV.dataSource = self
         collectionV.register(MakeListMovieCollectionViewCell.self, forCellWithReuseIdentifier: MakeListMovieCollectionViewCell.identifier)
+        
+        view.addSubview(noSearchView)
+        noSearchView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(-130)
+            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(60)
+        }
+    }
+    
+    private func animateWarning() {
+        noSearchView.isHidden = false
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            animations: {
+                self.noSearchView.snp.updateConstraints {
+                    $0.top.equalTo(self.view.safeAreaLayoutGuide)
+                }
+                self.view.layoutIfNeeded()
+        }, completion: { _ in
+            UIView.animate(
+                withDuration: 0.4,
+                delay: 1.5,
+                animations: {
+                    self.noSearchView.snp.updateConstraints {
+                        $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(-130)
+                    }
+                    self.view.layoutIfNeeded()
+            }, completion: { _ in return self.noSearchView.isHidden = true })
+        })
     }
     
     private func setCollectionViewLayout() {
@@ -149,8 +189,8 @@ class MakeListViewController: UIViewController {
 extension MakeListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let queryValue: String = searchBar.text ?? ""
-        //        searchMovieName(keyword: queryValue)
         searchMovie(keyword: queryValue)
+        searchBar.resignFirstResponder()
         view.addSubview(collectionV)
         collectionV.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(8)
@@ -158,7 +198,6 @@ extension MakeListViewController: UITextFieldDelegate {
             $0.trailing.equalToSuperview()
             $0.bottom.equalTo(view.snp.bottom)
         }
-        searchBar.resignFirstResponder()
         return true
     }
     
@@ -174,12 +213,9 @@ extension MakeListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
-//        print(self.data)
-//        guard let data = self.data?.items[indexPath.row].image else { fatalError() }
-//        cell.configure(item: data)
-        cell.movieData = self.data?.items[indexPath.row]
+        
+        cell.movieInfo = self.data?.items[indexPath.row]
         return cell
     }
 }

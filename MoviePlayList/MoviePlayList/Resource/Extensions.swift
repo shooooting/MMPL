@@ -20,11 +20,12 @@ extension String {
             .replacingOccurrences(of: "&amp", with: "")
             .replacingOccurrences(of: "|", with: " ")
     }
-    
-    
 }
 
 extension UIViewController {
+    
+    
+    // MARK: - indicate
     
     static let indicate = UIActivityIndicatorView()
     static let indicateView: UIView = {
@@ -58,5 +59,4 @@ extension UIViewController {
         UIViewController.indicateView.isHidden = true
         UIViewController.indicate.stopAnimating()
     }
-
 }

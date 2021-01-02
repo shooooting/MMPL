@@ -13,7 +13,7 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MakeListMovieCollectionViewCell"
     
-    var movieData: MovieInfo? {
+    var movieInfo: MovieInfo? {
         didSet {
             configure()
         }
@@ -52,7 +52,7 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
     
     private func constraintUI() {
         contentView.addSubview(img)
-        contentView.backgroundColor = .systemGray
+        contentView.backgroundColor = .quaternaryLabel
         img.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
@@ -62,8 +62,8 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
-        guard let image = movieData?.image else { return }
-        guard let title = movieData?.title else { return }
+        guard let image = movieInfo?.image else { return }
+        guard let title = movieInfo?.title else { return }
         
         if image == "" {
             img.image = UIImage(named: "noposter")
@@ -75,10 +75,9 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
         estimatedSizeCell.text = title.stringChange()
         estimatedSizeCell.layoutIfNeeded()
         
-        let imgWidth = contentView.frame.width
-        let targetSize = CGSize(width: imgWidth, height: 300)
+        let targetSize = CGSize(width: contentView.frame.width, height: 100)
         let size = estimatedSizeCell.systemLayoutSizeFitting(targetSize)
-        self.title = estimatedSizeCell
+//        self.title = estimatedSizeCell
         
         self.title.snp.makeConstraints {
             $0.center.equalToSuperview()
