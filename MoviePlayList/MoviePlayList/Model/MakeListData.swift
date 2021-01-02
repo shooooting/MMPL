@@ -34,6 +34,5 @@ struct MovieInfo: Decodable {
     var director: String
     var actor: String
     var userRating: String
-    
 }
 

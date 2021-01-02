@@ -176,11 +176,10 @@ extension MakeListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MakeListMovieCollectionViewCell.identifier, for: indexPath) as! MakeListMovieCollectionViewCell
-        
-        guard let data = self.data?.items[indexPath.row].image else { fatalError() }
-        //        gaurd let imgURL = URL(string: data.items[indexPath.row].image) else { return cell }
-        
-        cell.configure(item: data)
+//        print(self.data)
+//        guard let data = self.data?.items[indexPath.row].image else { fatalError() }
+//        cell.configure(item: data)
+        cell.movieData = self.data?.items[indexPath.row]
         return cell
     }
 }
@@ -201,7 +200,6 @@ extension MakeListViewController: UICollectionViewDelegate {
 
 extension MakeListViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
         data?.items.removeAll()
         collectionV.reloadData()
     }

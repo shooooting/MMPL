@@ -76,29 +76,23 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             let img = detailData[indexPath.item].image
             guard let imgURL = URL(string: img) else { return cell }
             guard let imgData = try? Data(contentsOf: imgURL) else { return cell }
-            image = UIImage(data: imgData) ?? UIImage(named: "noposter") as! UIImage
+            image = UIImage(data: imgData) ?? UIImage(named: "noposter")!
         }
         
         let title = detailData[indexPath.item].title
-        let titleResult = title.replacingOccurrences(of: "</b>", with: "")
-            .replacingOccurrences(of: "<b>", with: "")
-            .replacingOccurrences(of: "&amp", with: "")
+        let titleResult = title.stringChange()
         
         let subTitle = detailData[indexPath.item].subtitle
-        let subTitleResult = subTitle.replacingOccurrences(of: "</b>", with: "")
-            .replacingOccurrences(of: "<b>", with: "")
-            .replacingOccurrences(of: "&amp", with: "")
+        let subTitleResult = subTitle.stringChange()
         
         let date = detailData[indexPath.item].pubDate
         
         let directorString = detailData[indexPath.item].director
-        let directorResult = directorString.replacingOccurrences(of: "|", with: " ")
+        let directorResult = directorString.stringChange()
         
         let actorString = detailData[indexPath.item].actor
         
-        let actorResult = actorString.replacingOccurrences(of: "|", with: " ")
-            .replacingOccurrences(of: "</b>", with: "")
-            .replacingOccurrences(of: "<b>", with: "")
+        let actorResult = actorString.stringChange()
         
         let userRating = detailData[indexPath.item].userRating
         
@@ -115,48 +109,14 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     }
     
     @objc func addList(_ sender: UIButton) {
-        let title = detailData[0].title
-        let link = detailData[0].link
-        let poster = detailData[0].image
-        
-        struct MovieList {
-            var title: String
-            var listname: String
-            var link: String
-            var poster: String?
-        }
-        
-        let movie = MovieList(
-            title: title,
-            listname: "",
-            link: link,
-            poster: poster
-        )
-        
-        let persistenceManager = PersistenceManager.shared
-        let context = persistenceManager.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "MovieList", in: context)
-        
-        if let entity = entity {
-            let movieList = NSManagedObject(entity: entity, insertInto: context)
-            movieList.setValue(movie.title, forKey: "title")
-            movieList.setValue(movie.listname, forKey: "listname")
-            movieList.setValue(movie.poster, forKey: "poster")
-            movieList.setValue(movie.link, forKey: "link")
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            print(error)
-        }
+
     }
     
     @objc func moreMovie(_ sender: UIButton) {
         let link = LinkViewController()
         let url = detailData[0].link
         let title = detailData[0].title
-        let titleResult = title.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
+        let titleResult = title.stringChange()
         link.upViewTitle.text = titleResult
         link.url = url
         

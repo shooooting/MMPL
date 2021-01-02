@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
             guard let url = URL(string: AuthUser[0].profileImageUrl) else { return }
             selectProfileImageButton.kf.setImage(with: url, for: .normal)
             selectProfileImageButton.layer.cornerRadius = 200 / 2
+            stopIndicate()
         }
     }
     private lazy var titleView: MainTitleView = {
@@ -85,42 +86,50 @@ class ProfileViewController: UIViewController {
         [backButton, menuButton].forEach {
             titleView.addSubview($0)
         }
-        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-        menuButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
     }
     
     private func authUser() {
         Service.LoginUser { user in
             self.AuthUser = user
         }
+        showIndicate()
     }
-    
-    private func setLayout() {
-        titleView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(60)
-        }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        selectProfileImageButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        selectProfileImageButton.layer.cornerRadius = 200 / 2
         
-        selectProfileImageButton.snp.makeConstraints {
-            $0.top.equalTo(titleView.snp.bottom)
-            $0.centerX.equalToSuperview()
-            $0.height.width.equalTo(200)
+        Service.updateUserData(name: image) { error in
+            if let error = error {
+                print("DEBUG: Failed to upload \(error.localizedDescription)")
+                return
+            }
         }
-        
-//        collectionView.snp.makeConstraints {
-//            $0.top.equalTo(titleView.snp.bottom)
-//            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
-//        }
-        
-        backButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
-        }
-        
-        menuButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(16)
-        }
+
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - ProfileImage Action
+
+extension ProfileViewController {
+
+    private func ProfileImageAction() {
+        selectProfileImageButton.addTarget(self, action: #selector(handleProfileImageButton), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
+    }
+
+    @objc
+    private func handleProfileImageButton() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
     }
     
     @objc
@@ -151,47 +160,38 @@ class ProfileViewController: UIViewController {
                 }
         }))
         
-        actionSheet.popoverPresentationController?.sourceView = self.view
-        actionSheet.popoverPresentationController?.sourceRect = CGRect(x: self.view.frame.midX,
-                                                                       y: self.view.frame.midY / 4,
-                                                                       width: 0,
-                                                                       height: 0)
-        
         present(actionSheet, animated: true)
     }
 }
 
-// MARK: - ProfileImage Action
+// MARK: - AutoLayout
 
 extension ProfileViewController {
-
-    private func ProfileImageAction() {
-        selectProfileImageButton.addTarget(self, action: #selector(handleProfileImageButton), for: .touchUpInside)
-    }
-
-    @objc
-    private func handleProfileImageButton() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true)
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-        selectProfileImageButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
-        selectProfileImageButton.layer.cornerRadius = 200 / 2
-        
-        Service.updateUserData(name: image) { error in
-            if let error = error {
-                print("DEBUG: Failed to upload \(error.localizedDescription)")
-                return
-            }
+    private func setLayout() {
+        titleView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(60)
         }
-
-        dismiss(animated: true, completion: nil)
+        
+        selectProfileImageButton.snp.makeConstraints {
+            $0.top.equalTo(titleView.snp.bottom)
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(200)
+        }
+        
+//        collectionView.snp.makeConstraints {
+//            $0.top.equalTo(titleView.snp.bottom)
+//            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+//        }
+        
+        backButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        menuButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(16)
+        }
     }
 }

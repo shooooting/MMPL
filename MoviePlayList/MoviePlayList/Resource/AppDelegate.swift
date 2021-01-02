@@ -25,15 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBar = UITabBarController()
     let main = UINavigationController(rootViewController: MainViewController())
     let search = UINavigationController(rootViewController: MakeListViewController())
-    let third = UINavigationController(rootViewController: ThirdViewController())
+//    let third = UINavigationController(rootViewController: ThirdViewController())
     
     main.tabBarItem = UITabBarItem(title: "L:)st", image: UIImage(systemName: "film"), tag: 0)
     search.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass.circle"), tag: 1)
-    third.tabBarItem = UITabBarItem(title: "choose", image: UIImage(systemName: "list.bullet"), tag: 2)
+//    third.tabBarItem = UITabBarItem(title: "choose", image: UIImage(systemName: "list.bullet"), tag: 2)
     
     UITabBar.appearance().backgroundColor = UIColor.white
     UITabBar.appearance().tintColor = .black
-    tabBar.viewControllers = [main, search, third]
+    tabBar.viewControllers = [main, search]
     
     window?.rootViewController = tabBar
     window?.makeKeyAndVisible()

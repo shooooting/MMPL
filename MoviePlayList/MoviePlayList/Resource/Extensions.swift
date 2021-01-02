@@ -9,12 +9,23 @@
 import UIKit
 
 extension String {
+    
     func safeDatabaseKey() -> String {
         return self.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
     }
+    
+    func stringChange() -> String {
+        return self.replacingOccurrences(of: "</b>", with: "")
+            .replacingOccurrences(of: "<b>", with: "")
+            .replacingOccurrences(of: "&amp", with: "")
+            .replacingOccurrences(of: "|", with: " ")
+    }
+    
+    
 }
 
 extension UIViewController {
+    
     static let indicate = UIActivityIndicatorView()
     static let indicateView: UIView = {
         let indi = UIView()
