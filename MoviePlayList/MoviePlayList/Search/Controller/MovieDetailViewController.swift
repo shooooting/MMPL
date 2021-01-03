@@ -7,31 +7,35 @@
 //
 
 import UIKit
-import CoreData
 
 class MovieDetailViewController: UIViewController {
     
+    // MARK: - Properitse
     private let layout = UICollectionViewFlowLayout()
     private lazy var collectionV = UICollectionView(frame: .zero,
                                                     collectionViewLayout: layout)
     
     var detailData: [MovieInfo] = []
     
+    private lazy var titleNavi = CustomBackNaviView(title: "PickMov:)e", backButton: backBtn)
+    private lazy var backBtn = NaviButton(image: UIImage(systemName: "chevron.left"))
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setConstraint()
-        tabBarController?.tabBar.isHidden = false
+//        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
+//        tabBarController?.tabBar.isHidden = false
     }
     
     private func setUI() {
-        view.addSubview(collectionV)
+        
         setLayout()
         navigationController?.navigationBar.isHidden = true
 //        tabBarController?.tabBar.isHidden = true
@@ -40,6 +44,7 @@ class MovieDetailViewController: UIViewController {
         collectionV.isScrollEnabled = false
         
         collectionV.register(MovieDetailCollectionViewCell.self, forCellWithReuseIdentifier: MovieDetailCollectionViewCell.identifier)
+        backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
     }
     
     private func setLayout() {
@@ -53,9 +58,19 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func setConstraint() {
+        [titleNavi, collectionV].forEach {
+            view.addSubview($0)
+        }
+        
+        titleNavi.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.15)
+        }
+        
         collectionV.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+            $0.top.equalTo(titleNavi.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.snp.bottom)
         }
     }
 }
@@ -99,16 +114,18 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         
         cell.moreButton.addTarget(self, action: #selector(moreMovie(_:)), for: .touchUpInside)
         cell.addButton.addTarget(self, action: #selector(addList(_:)), for: .touchUpInside)
-        cell.backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
+        
         return cell
     }
     
     @objc func back() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func addList(_ sender: UIButton) {
-
+        let vc = AddMovieViewController()
+        vc.movieInfo = self.detailData[0]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func moreMovie(_ sender: UIButton) {

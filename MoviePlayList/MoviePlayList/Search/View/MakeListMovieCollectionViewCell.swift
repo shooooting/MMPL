@@ -30,6 +30,7 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
         let title = UILabel()
         title.textColor = .white
         title.backgroundColor = .darkGray
+        title.alpha = 0.9
         title.numberOfLines = 0
         title.textAlignment = .center
         return title
@@ -77,7 +78,6 @@ class MakeListMovieCollectionViewCell: UICollectionViewCell {
         
         let targetSize = CGSize(width: contentView.frame.width, height: 100)
         let size = estimatedSizeCell.systemLayoutSizeFitting(targetSize)
-//        self.title = estimatedSizeCell
         
         self.title.snp.makeConstraints {
             $0.center.equalToSuperview()

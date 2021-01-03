@@ -12,9 +12,6 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MovieDetailCollectionViewCell"
     
-    private let upViewTitle = UILabel()
-    let backBtn = UIButton()
-    
     private let view = UIImageView()
     
     private let img: UIImageView = {
@@ -49,22 +46,13 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
     
     private func constraintUI() {
         contentView.backgroundColor = .systemBackground
-        [backBtn, upViewTitle, view, img, titleLabel, subTitleLabel, date, directorTitle, director, actorTitle, actor, rating, ratingScore, moreButton, addButton].forEach { contentView.addSubview($0) }
-        
-        let sfImg = UIImage(systemName: "arrow.left")
-        backBtn.setImage(sfImg, for: .normal)
-        backBtn.tintColor = UIColor.black
-        backBtn.sizeToFit()
+        [view, img, titleLabel, subTitleLabel, date, directorTitle, director, actorTitle, actor, rating, ratingScore, moreButton, addButton].forEach { contentView.addSubview($0) }
         
         moreButton.setTitle("더보기", for: .normal)
         moreButton.setTitleColor(.white, for: .normal)
         moreButton.backgroundColor = .black
         
         view.backgroundColor = .black
-        
-        upViewTitle.text = "PickMov:)e"
-        
-        upViewTitle.font = UIFont(name: "AppleSDGothicNeo-bold", size: 35)
         
         titleLabel.font = UIFont(name: "AppleSDGothicNeo-bold", size: 25)
         subTitleLabel.font = UIFont(name: "AppleSDGothicNeo-UltraLight", size: 20)
@@ -93,22 +81,9 @@ class MovieDetailCollectionViewCell: UICollectionViewCell {
         addButton.setTitleColor(.white, for: .normal)
         addButton.backgroundColor = .black
         
-        backBtn.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalTo(upViewTitle.snp.leading)
-            $0.bottom.equalTo(upViewTitle.snp.top)
-        }
-        
-        upViewTitle.snp.makeConstraints {
-            $0.top.equalTo(backBtn.snp.bottom)
-            $0.height.equalTo(70)
-            $0.leading.equalToSuperview().inset(8)
-            $0.bottom.equalTo(view.snp.top)
-        }
-        
         view.snp.makeConstraints {
-            $0.top.equalTo(upViewTitle.snp.bottom)
-            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
             $0.width.equalTo(contentView.snp.width)
             $0.height.equalToSuperview().multipliedBy(0.15)
         }

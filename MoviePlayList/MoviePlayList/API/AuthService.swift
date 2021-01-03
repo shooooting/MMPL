@@ -25,6 +25,18 @@ class AuthServiece {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
+    func logOut(completion: @escaping (Bool) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true)
+            return
+        } catch {
+            print("error")
+            completion(false)
+            return
+        }
+    }
+    
     func createUser(profileAuth: profileAuth, completion: ((Error?) -> Void)?) {
         
         guard let imageData = profileAuth.profileImage.jpegData(compressionQuality: 0.3) else { return }

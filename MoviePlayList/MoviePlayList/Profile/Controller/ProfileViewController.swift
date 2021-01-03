@@ -139,14 +139,14 @@ extension ProfileViewController {
     
     @objc
     private func didTapMenuButton() {
-        let actionSheet = UIAlertController(title: "Log Out",
-                                            message: "Are you sure you want to log out?",
+        let actionSheet = UIAlertController(title: "로그 아웃",
+                                            message: "로그 아웃하시겠습니까?",
                                             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel",
+        actionSheet.addAction(UIAlertAction(title: "취소",
                                             style: .cancel,
                                             handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
-                AuthManager.shared.logOut { success in
+        actionSheet.addAction(UIAlertAction(title: "로그 아웃", style: .destructive, handler: { _ in
+                AuthServiece.shared.logOut { success in
                         if success {
                             let loginVC = UINavigationController(rootViewController: LoginViewController())
                             loginVC.modalPresentationStyle = .fullScreen

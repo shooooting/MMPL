@@ -6,7 +6,6 @@
 //  Copyright © 2020 shooooting. All rights reserved.
 //
 import Alamofire
-import RxSwift
 import UIKit
 
 public class APIManager {

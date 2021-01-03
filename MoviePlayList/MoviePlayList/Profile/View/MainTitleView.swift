@@ -41,7 +41,6 @@ class MainTitleView: UIView {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
-        
     }
     
     func mainConfigure(with title: String, font: UIFont) {

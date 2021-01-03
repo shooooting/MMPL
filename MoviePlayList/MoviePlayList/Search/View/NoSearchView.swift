@@ -45,14 +45,8 @@ class NoSearchView: UIView {
     private func setConstraints() {
         self.addSubview(title)
         self.title.snp.makeConstraints {
-//            $0.leading.equalToSuperview().inset(16)
             $0.center.equalToSuperview()
         }
-    }
-    
-    // MARK: - Helpers
-    func setText(text: String) {
-        title.text = text
     }
 }
 

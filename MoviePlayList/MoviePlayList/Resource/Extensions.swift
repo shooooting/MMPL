@@ -18,7 +18,7 @@ extension String {
         return self.replacingOccurrences(of: "</b>", with: "")
             .replacingOccurrences(of: "<b>", with: "")
             .replacingOccurrences(of: "&amp", with: "")
-            .replacingOccurrences(of: "|", with: " ")
+            .replacingOccurrences(of: "|", with: ", ")
     }
 }
 
@@ -58,5 +58,24 @@ extension UIViewController {
     func stopIndicate() {
         UIViewController.indicateView.isHidden = true
         UIViewController.indicate.stopAnimating()
+    }
+    
+    //MARK: - Navigation
+    func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .systemPurple
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
+        navigationItem.title = title
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+        
+        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
     }
 }

@@ -10,15 +10,20 @@
 		0E003838259F077E00CCBAE8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E003837259F077E00CCBAE8 /* User.swift */; };
 		0E00383D259F0A4400CCBAE8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00383C259F0A4400CCBAE8 /* Service.swift */; };
 		0E10E4CF256E8380006BB901 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */; };
-		0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D2256E8489006BB901 /* DataBaseManager.swift */; };
 		0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4D5256E8530006BB901 /* LoginViewController.swift */; };
-		0E10E4FE256F986F006BB901 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E4FD256F986F006BB901 /* AuthManager.swift */; };
 		0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10E501256FBCCF006BB901 /* ProfileViewController.swift */; };
 		0E11DE8D25A0F719008E9494 /* NoSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DE8C25A0F719008E9494 /* NoSearchView.swift */; };
+		0E11DE9125A1942E008E9494 /* NaviButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DE9025A1942E008E9494 /* NaviButton.swift */; };
+		0E11DE9825A19801008E9494 /* CustomMainNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DE9725A19800008E9494 /* CustomMainNaviView.swift */; };
+		0E11DE9B25A1A29B008E9494 /* MovieSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DE9A25A1A29B008E9494 /* MovieSearchTextField.swift */; };
+		0E11DE9F25A1B018008E9494 /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DE9E25A1B018008E9494 /* AddMovieViewController.swift */; };
+		0E11DEA225A1B83B008E9494 /* AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11DEA125A1B83B008E9494 /* AccessoryView.swift */; };
 		0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E16B0FF253C8929000404C0 /* MainTitleView.swift */; };
+		0E1FA2AF25A20F480064E7F1 /* AddMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FA2AE25A20F480064E7F1 /* AddMovieCell.swift */; };
+		0E1FA2B525A224AC0064E7F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1FA2B425A224AC0064E7F1 /* Constants.swift */; };
 		0E24892D2574BB3400DD797C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E24892C2574BB3400DD797C /* Extensions.swift */; };
 		0E3A53FD25774C57000E7AB7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3A53FC25774C57000E7AB7 /* APIManager.swift */; };
-		0E482A9625A0995A00F36B7B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E482A9525A0995A00F36B7B /* Movie.swift */; };
+		0E482A9625A0995A00F36B7B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E482A9525A0995A00F36B7B /* Review.swift */; };
 		0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69449C24E10C3D005DCD10 /* AppDelegate.swift */; };
 		0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6944A024E10C3D005DCD10 /* MainViewController.swift */; };
 		0E6944A624E10C3E005DCD10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6944A524E10C3E005DCD10 /* Assets.xcassets */; };
@@ -39,7 +44,9 @@
 		0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */; };
 		0EAA869B258B6A0600D75C75 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */; };
 		0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA86AC258F0EBB00D75C75 /* AuthService.swift */; };
+		0EC534E825A1CC3200FED46F /* CustomBackNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC534E725A1CC3200FED46F /* CustomBackNaviView.swift */; };
 		0ED132E1253D812500CCB9A7 /* AddReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */; };
+		0ED9800425A1F6EB00144FD9 /* AddMovieNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9800325A1F6EB00144FD9 /* AddMovieNaviView.swift */; };
 		0EDBAE7C25A0B01B00CE71CD /* MakeListMovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDBAE7B25A0B01B00CE71CD /* MakeListMovieDetailViewModel.swift */; };
 		0EDD563F25785A8D00922C53 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDD563E25785A8D00922C53 /* Kingfisher */; };
 		0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */; };
@@ -50,15 +57,20 @@
 		0E003837259F077E00CCBAE8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E00383C259F0A4400CCBAE8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E10E4CE256E8380006BB901 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0E10E4D2256E8489006BB901 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		0E10E4D5256E8530006BB901 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0E10E4FD256F986F006BB901 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0E10E501256FBCCF006BB901 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E11DE8C25A0F719008E9494 /* NoSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchView.swift; sourceTree = "<group>"; };
+		0E11DE9025A1942E008E9494 /* NaviButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviButton.swift; sourceTree = "<group>"; };
+		0E11DE9725A19800008E9494 /* CustomMainNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMainNaviView.swift; sourceTree = "<group>"; };
+		0E11DE9A25A1A29B008E9494 /* MovieSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchTextField.swift; sourceTree = "<group>"; };
+		0E11DE9E25A1B018008E9494 /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
+		0E11DEA125A1B83B008E9494 /* AccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryView.swift; sourceTree = "<group>"; };
 		0E16B0FF253C8929000404C0 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
+		0E1FA2AE25A20F480064E7F1 /* AddMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieCell.swift; sourceTree = "<group>"; };
+		0E1FA2B425A224AC0064E7F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0E24892C2574BB3400DD797C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E3A53FC25774C57000E7AB7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		0E482A9525A0995A00F36B7B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		0E482A9525A0995A00F36B7B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		0E69449924E10C3D005DCD10 /* MoviePlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviePlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69449C24E10C3D005DCD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E6944A024E10C3D005DCD10 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +92,9 @@
 		0EAA8693258B5ABF00D75C75 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0EAA869A258B6A0600D75C75 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		0EAA86AC258F0EBB00D75C75 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		0EC534E725A1CC3200FED46F /* CustomBackNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackNaviView.swift; sourceTree = "<group>"; };
 		0ED132E0253D812500CCB9A7 /* AddReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewButton.swift; sourceTree = "<group>"; };
+		0ED9800325A1F6EB00144FD9 /* AddMovieNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieNaviView.swift; sourceTree = "<group>"; };
 		0EDBAE7B25A0B01B00CE71CD /* MakeListMovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeListMovieDetailViewModel.swift; sourceTree = "<group>"; };
 		0EDD56412578614F00922C53 /* MakeListNoneCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeListNoneCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F7DAA3A62A38682CECE1201 /* Pods-MoviePlayList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviePlayList.debug.xcconfig"; path = "Target Support Files/Pods-MoviePlayList/Pods-MoviePlayList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,10 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				0E69449C24E10C3D005DCD10 /* AppDelegate.swift */,
-				0E10E4D2256E8489006BB901 /* DataBaseManager.swift */,
-				0E10E4FD256F986F006BB901 /* AuthManager.swift */,
-				0E3A53FC25774C57000E7AB7 /* APIManager.swift */,
 				0E24892C2574BB3400DD797C /* Extensions.swift */,
+				0E1FA2B425A224AC0064E7F1 /* Constants.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -147,6 +159,33 @@
 				0E6944A024E10C3D005DCD10 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		0E11DE9D25A1AFE8008E9494 /* AddMovie */ = {
+			isa = PBXGroup;
+			children = (
+				0E11DEA425A1BA91008E9494 /* View */,
+				0E11DEA525A1BA9D008E9494 /* Controller */,
+			);
+			path = AddMovie;
+			sourceTree = "<group>";
+		};
+		0E11DEA425A1BA91008E9494 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E11DEA125A1B83B008E9494 /* AccessoryView.swift */,
+				0ED9800325A1F6EB00144FD9 /* AddMovieNaviView.swift */,
+				0E1FA2AE25A20F480064E7F1 /* AddMovieCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E11DEA525A1BA9D008E9494 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E11DE9E25A1B018008E9494 /* AddMovieViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		0E69449024E10C3D005DCD10 = {
@@ -173,6 +212,7 @@
 				0E10E4D1256E8456006BB901 /* Resource */,
 				0E6944BA24E1CA01005DCD10 /* Model */,
 				0E6944B024E10CF9005DCD10 /* View */,
+				0E11DE9D25A1AFE8008E9494 /* AddMovie */,
 				0E10E51F25700419006BB901 /* Main */,
 				0EB9CC4825A07577002F4178 /* Search */,
 				0EB85E1C259E3EFB00DC5A46 /* Profile */,
@@ -194,6 +234,9 @@
 				0E6D749A24EA4D790019DAB8 /* ThirdViewControllerCell.swift */,
 				0E6D748E24E7DCF20019DAB8 /* LinkViewController.swift */,
 				0E6D749824EA4D1C0019DAB8 /* ThirdViewController.swift */,
+				0E11DE9025A1942E008E9494 /* NaviButton.swift */,
+				0E11DE9725A19800008E9494 /* CustomMainNaviView.swift */,
+				0EC534E725A1CC3200FED46F /* CustomBackNaviView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,7 +246,7 @@
 			children = (
 				0E6944BB24E1CA10005DCD10 /* MakeListData.swift */,
 				0E003837259F077E00CCBAE8 /* User.swift */,
-				0E482A9525A0995A00F36B7B /* Movie.swift */,
+				0E482A9525A0995A00F36B7B /* Review.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +281,7 @@
 		0EAA86AB258F0E6E00D75C75 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0E3A53FC25774C57000E7AB7 /* APIManager.swift */,
 				0EAA86AC258F0EBB00D75C75 /* AuthService.swift */,
 				0E00383C259F0A4400CCBAE8 /* Service.swift */,
 			);
@@ -256,10 +300,9 @@
 		0EB9CC4825A07577002F4178 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				0ED9800625A1F75200144FD9 /* Controller */,
 				0EDBAE7A25A0AEBD00CE71CD /* ViewModel */,
 				0EB9CC4C25A07C07002F4178 /* View */,
-				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
-				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -268,10 +311,20 @@
 			isa = PBXGroup;
 			children = (
 				0E11DE8C25A0F719008E9494 /* NoSearchView.swift */,
+				0E11DE9A25A1A29B008E9494 /* MovieSearchTextField.swift */,
 				0E6944BD24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift */,
 				0E6944C124E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0ED9800625A1F75200144FD9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E6944B824E17855005DCD10 /* MakeListViewController.swift */,
+				0E6944BF24E2B7DB005DCD10 /* MovieDetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		0EDBAE7A25A0AEBD00CE71CD /* ViewModel */ = {
@@ -422,16 +475,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E11DE9125A1942E008E9494 /* NaviButton.swift in Sources */,
+				0E1FA2B525A224AC0064E7F1 /* Constants.swift in Sources */,
 				0E10E4D6256E8530006BB901 /* LoginViewController.swift in Sources */,
-				0E10E4FE256F986F006BB901 /* AuthManager.swift in Sources */,
+				0E11DE9F25A1B018008E9494 /* AddMovieViewController.swift in Sources */,
 				0E6944A124E10C3D005DCD10 /* MainViewController.swift in Sources */,
 				0E69449D24E10C3D005DCD10 /* AppDelegate.swift in Sources */,
 				0EDD56422578614F00922C53 /* MakeListNoneCollectionViewCell.swift in Sources */,
 				0E16B100253C8929000404C0 /* MainTitleView.swift in Sources */,
 				0E10E502256FBCCF006BB901 /* ProfileViewController.swift in Sources */,
 				0EAA8694258B5ABF00D75C75 /* CustomTextField.swift in Sources */,
-				0E10E4D3256E8489006BB901 /* DataBaseManager.swift in Sources */,
 				0EAA8689258B530D00D75C75 /* RegistrationViewModel.swift in Sources */,
+				0E11DE9825A19801008E9494 /* CustomMainNaviView.swift in Sources */,
+				0ED9800425A1F6EB00144FD9 /* AddMovieNaviView.swift in Sources */,
+				0E11DEA225A1B83B008E9494 /* AccessoryView.swift in Sources */,
 				0E003838259F077E00CCBAE8 /* User.swift in Sources */,
 				0EAA86AD258F0EBB00D75C75 /* AuthService.swift in Sources */,
 				0E00383D259F0A4400CCBAE8 /* Service.swift in Sources */,
@@ -439,18 +496,21 @@
 				0E6944BE24E2623D005DCD10 /* MakeListMovieCollectionViewCell.swift in Sources */,
 				0EAA8685258B52F300D75C75 /* LoginViewModel.swift in Sources */,
 				0E11DE8D25A0F719008E9494 /* NoSearchView.swift in Sources */,
+				0E1FA2AF25A20F480064E7F1 /* AddMovieCell.swift in Sources */,
 				0E6944C224E2CBC8005DCD10 /* MovieDetailCollectionViewCell.swift in Sources */,
 				0E6D749B24EA4D790019DAB8 /* ThirdViewControllerCell.swift in Sources */,
 				0EAA869B258B6A0600D75C75 /* RegistrationViewController.swift in Sources */,
+				0E11DE9B25A1A29B008E9494 /* MovieSearchTextField.swift in Sources */,
 				0E6944C024E2B7DB005DCD10 /* MovieDetailViewController.swift in Sources */,
 				0E6944BC24E1CA10005DCD10 /* MakeListData.swift in Sources */,
 				0E6D749924EA4D1C0019DAB8 /* ThirdViewController.swift in Sources */,
 				0E6D748F24E7DCF20019DAB8 /* LinkViewController.swift in Sources */,
 				0E6944B924E17855005DCD10 /* MakeListViewController.swift in Sources */,
 				0E24892D2574BB3400DD797C /* Extensions.swift in Sources */,
-				0E482A9625A0995A00F36B7B /* Movie.swift in Sources */,
+				0E482A9625A0995A00F36B7B /* Review.swift in Sources */,
 				0EDBAE7C25A0B01B00CE71CD /* MakeListMovieDetailViewModel.swift in Sources */,
 				0E3A53FD25774C57000E7AB7 /* APIManager.swift in Sources */,
+				0EC534E825A1CC3200FED46F /* CustomBackNaviView.swift in Sources */,
 				0E6944B724E17065005DCD10 /* MakeListCollectionViewCell.swift in Sources */,
 				0EAA8690258B56A100D75C75 /* InputContainerView.swift in Sources */,
 			);

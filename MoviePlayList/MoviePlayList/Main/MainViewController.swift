@@ -13,17 +13,8 @@ import FirebaseAuth
 class MainViewController: UIViewController {
     
     // MARK: - Properties
-    let titleView = MainTitleView()
-    let button = AddReviewButton(title: "새로운 영화 추가", style: .white)
-    
-    private let personButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "person.circle"), for: .normal)
-        button.layer.masksToBounds = true
-        button.tintColor = .black
-        button.sizeToFit()
-        return button
-    }()
+    private lazy var titleView = CustomMainNaviView(title: "PlayL:)st", button: personButton)
+    private lazy var personButton = NaviButton(image: UIImage(systemName: "person.circle"))
     
     private let collectionV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +22,6 @@ class MainViewController: UIViewController {
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
-    var isPlayList = false
     var isOneStepPaging = true
     var currentIndex: CGFloat = 0
     
@@ -71,8 +61,6 @@ class MainViewController: UIViewController {
             view.addSubview($0)
         }
         
-        titleView.addSubview(personButton)
-        
         titleView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(60)
@@ -83,12 +71,6 @@ class MainViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
-        
-        personButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(20)
-            $0.width.height.equalTo(30)
-        }
     }
     
     private func setConstraint() {
@@ -98,7 +80,6 @@ class MainViewController: UIViewController {
         collectionV.register(MakeListCollectionViewCell.self, forCellWithReuseIdentifier: MakeListCollectionViewCell.identifier)
         collectionV.decelerationRate = UIScrollView.DecelerationRate.fast
         personButton.addTarget(self, action: #selector(didTapPersonButton), for: .touchUpInside)
-        titleView.mainConfigure(with: "PlayL:)st", font: UIFont.boldSystemFont(ofSize: 35))
     }
     
     @objc
